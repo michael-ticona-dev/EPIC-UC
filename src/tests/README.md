@@ -1,0 +1,1 @@
+# Tests unitarios y de integración (frontend)

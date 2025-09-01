@@ -1,0 +1,1 @@
+# Tipos TS (si usas TypeScript, ej: interfaces, DTOs)

@@ -1,0 +1,1 @@
+# Íconos para la app (favicon, app icons, etc.)

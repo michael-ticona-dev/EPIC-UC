@@ -1,0 +1,1 @@
+# Páginas exclusivas del admin (Dashboard, Gestión de juegos, Usuarios)
