@@ -1,1 +1,0 @@
-# Configuración y scripts de la base de datos PostgreSQL

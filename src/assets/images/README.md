@@ -1,1 +1,0 @@
- # Imágenes locales (ej: logos pequeños, backgrounds)

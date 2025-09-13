@@ -1,1 +1,0 @@
-# Botones, inputs, modales, etc. (UI components)

@@ -1,1 +1,0 @@
-# Storybook (documentación de componentes UI)

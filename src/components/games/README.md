@@ -1,1 +1,0 @@
-# Componentes relacionados con juegos (cards, detalles)

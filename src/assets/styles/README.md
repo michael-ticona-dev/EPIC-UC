@@ -1,1 +1,0 @@
-# Archivos CSS/SCSS globales

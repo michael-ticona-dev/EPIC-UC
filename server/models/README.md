@@ -1,1 +1,0 @@
-# Modelos de datos (sequelize / prisma / raw SQL)

@@ -1,1 +1,0 @@
-# Panel de administrador (CRUD, dashboard)

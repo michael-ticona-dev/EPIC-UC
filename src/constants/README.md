@@ -1,1 +1,0 @@
-# Constantes globales (roles, endpoints, configs)

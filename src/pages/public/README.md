@@ -1,1 +1,0 @@
-# Páginas públicas (Home, About, Contact, Login, Register)

@@ -1,1 +1,0 @@
-# Tests backend (supertest, jest)

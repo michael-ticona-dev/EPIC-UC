@@ -1,1 +1,0 @@
-# Vistas / páginas principales
