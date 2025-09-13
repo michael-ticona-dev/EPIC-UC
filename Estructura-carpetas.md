@@ -6,6 +6,7 @@ EPIC-UC/
 │   │   └── manifest.json         
 │   ├── src/                      
 │   │   ├── componentes/          # Componentes reutilizables
+│   │   │   ├── public/           # css y js de los .html
 │   │   │   ├── ui/               # Botones, inputs, modales, etc.
 │   │   │   ├── layout/           # Navbar, Sidebar, Footer, Layout general
 │   │   │   ├── juegos/           # Componentes relacionados con juegos
