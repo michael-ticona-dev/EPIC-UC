@@ -1,0 +1,72 @@
+/* =========================
+GLOBAL
+========================= */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    background-color: black;
+    color:white;
+}
+
+/* =========================
+HEADER - BARRA
+========================= */
+header {
+    width: 100%;
+    padding: 10px 20px;
+    box-sizing: border-box;
+}
+
+.barra {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.barra-logo-principal img{
+    height: 50px;
+}
+
+.barra-de-busqueda {
+    flex: 1;
+    display: flex;
+    max-width: 500px;
+    margin: 0 20px;
+    border-radius: 10px;
+    background-color: rgb(41, 41, 41);
+}
+
+.barra-de-busqueda input{
+    flex: 1;
+    border: none;
+    padding: 8px 12px;
+    background: transparent;
+    color: white;
+    font-size: 14px;
+}
+
+.barra-de-busqueda button {
+    background-color: transparent;
+    border: none;
+    padding: 0 12px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+} 
+
+.barra-de-busqueda button img {
+    background: transparent;
+    height: 20px;
+    width: 20px;
+}
+
+/* =========================
+HEADER - BARRA - ICONOS
+========================= */
+.barra-iconos button {
+    color: black;
+}
+
+
