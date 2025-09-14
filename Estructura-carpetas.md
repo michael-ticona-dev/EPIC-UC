@@ -52,7 +52,8 @@ EPIC-UC/
 │
 ├── database/                     
 │   ├── queries/                  
-│   └── PostgreSQL.sql               
+│   └── PostgreSQL.sql    
+│   └── tablas.sql             
 │
 ├── tests/                        
 │   ├── backend/                  
