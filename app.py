@@ -30,9 +30,6 @@ def servir_frontend(ruta):
         archivo = os.path.basename(ruta_completa)
         return send_from_directory(directorio, archivo)
 
-    # Si no encuentra el archivo, vuelve al index.html (para SPA)
-    return send_from_directory(CARPETA_PUBLICA, "panel-principal.html")
-
 # =========================
 # FUNCIÓN PARA ENCONTRAR PUERTO LIBRE
 # =========================

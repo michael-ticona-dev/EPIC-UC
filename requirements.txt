@@ -14,7 +14,8 @@ psycopg2-binary
 # Seguridad y Autenticación
 # =========================
 Flask-JWT-Extended
-passlib[bcrypt]  # Recomendado usar bcrypt como algoritmo seguro
+passlib[bcrypt]  
+bcrypt
 
 # =========================
 # Utilidades
