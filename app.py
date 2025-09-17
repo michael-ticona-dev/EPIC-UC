@@ -44,6 +44,11 @@ def obtener_puerto_libre(puerto_inicial=5000):
                 puerto += 1  # intenta con el siguiente
 
 # =========================
+# PRUEBAS DE GIT
+# =========================
+# LI - prueba git.
+
+# =========================
 # EJECUCIÓN DEL SERVIDOR
 # =========================
 if __name__ == "__main__":
