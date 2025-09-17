@@ -1,23 +1,23 @@
 # =========================
 # Servidor Web
 # =========================
-Flask==3.0.3
-gunicorn==23.0.0
+Flask
+gunicorn
 
 # =========================
 # Base de Datos
 # =========================
-SQLAlchemy==2.0.30        # ORM para manejar modelos
-psycopg2-binary==2.9.9    # Conector PostgreSQL
+SQLAlchemy
+psycopg2-binary
 
 # =========================
 # Seguridad y Autenticación
 # =========================
-Flask-JWT-Extended==4.6.0 # Manejo de tokens JWT
-passlib==1.7.4            # Hash de contraseñas seguro
+Flask-JWT-Extended
+passlib[bcrypt]  # Recomendado usar bcrypt como algoritmo seguro
 
 # =========================
 # Utilidades
 # =========================
-python-dotenv==1.0.1      # Variables de entorno (.env)
-requests==2.32.3          # Hacer peticiones HTTP
+python-dotenv
+requests

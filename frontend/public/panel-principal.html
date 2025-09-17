@@ -1,12 +1,151 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <link rel="stylesheet" href="../src/components/public/panel-principal.css">
+    <title>Sistema de Login y Registro</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="../src/components/public/css/panel-principal.css">
+    
 </head>
 <body>
-    PERRA
+    <div class="container">
+        <button class="btn-abrir-modal" id="btn-abrir-modal">Abrir Modal</button>
+    </div>
+
+    <div class="modal-backdrop" id="modal-backdrop">
+        <div class="modal-contenido">
+            <span class="cerrar-modal" id="cerrar-modal">&times;</span>
+            
+            <div class="modal-imagen">
+                <img src="../src/components/public/images/portada_1.jpg" alt="Moda">
+            </div>
+            
+            <div class="modal-formulario">
+                <!-- Formulario de Registro -->
+                <form class="formulario-registro activo" id="formulario-registro">
+                    <div class="modal-header">
+                        <h2 class="modal-titulo">REGISTRO</h2>
+                        <p class="modal-subtitulo">Crea tu cuenta</p>
+                    </div>
+                    
+                    <div class="grupo-formulario">
+                        <label for="nombre-usuario">Nombre de usuario</label>
+                        <input type="text" id="nombre-usuario" name="nombre_usuario" placeholder="Ingresa tu nombre de usuario" required>
+                        <div class="mensaje-error" id="error-nombre-usuario"></div>
+                    </div>
+                    
+                    <div class="grupo-formulario">
+                        <label for="email">Email</label>
+                        <input type="email" id="email" name="email" placeholder="Ingresa tu email" required>
+                        <div class="mensaje-error" id="error-email"></div>
+                    </div>
+                    
+                    <div class="grupo-formulario">
+                        <label for="contrasena">Contraseña</label>
+                        <input type="password" id="contrasena" name="contrasena" placeholder="Crea una contraseña" required>
+                        <div class="mensaje-error" id="error-contrasena"></div>
+                    </div>
+                    
+                    <div class="grupo-formulario">
+                        <label for="confirmar-contrasena">Confirmar contraseña</label>
+                        <input type="password" id="confirmar-contrasena" name="confirmar_contrasena" placeholder="Confirma tu contraseña" required>
+                        <div class="mensaje-error" id="error-confirmar-contrasena"></div>
+                    </div>
+                    
+                    <div class="grupo-formulario">
+                        <label for="nombre">Nombre</label>
+                        <input type="text" id="nombre" name="nombre" placeholder="Ingresa tu nombre" required>
+                    </div>
+                    
+                    <div class="grupo-formulario">
+                        <label for="apellido">Apellido</label>
+                        <input type="text" id="apellido" name="apellido" placeholder="Ingresa tu apellido" required>
+                    </div>
+                    
+                    <div class="grupo-formulario">
+                        <label for="fecha-nacimiento">Fecha de nacimiento</label>
+                        <input type="date" id="fecha-nacimiento" name="fecha_nacimiento" required>
+                    </div>
+                    
+                    <div class="grupo-checkbox">
+                        <input type="checkbox" id="terminos-checkbox" required>
+                        <label for="terminos-checkbox">Soy mayor de 18 años y he leído y acepto los 
+                        <a href="#">Términos y condiciones</a> y la <a href="#">Política de calificación</a>.</label>
+                    </div>
+                    
+                    <div class="grupo-checkbox">
+                        <input type="checkbox" id="boletin-checkbox">
+                        <label for="boletin-checkbox">Me gustaría recibir actualizaciones sobre ropa y 
+                        promociones de boutiques.</label>
+                    </div>
+                    
+                    <button type="submit" class="btn-enviar">REGISTRARSE</button>
+                    
+                    <div class="login-social">
+                        <p>o mediante redes sociales</p>
+                        <div class="iconos-sociales">
+                            <div class="icono-social facebook">
+                                <i class="fab fa-facebook-f"></i>
+                            </div>
+                            <div class="icono-social google">
+                                <i class="fab fa-google"></i>
+                            </div>
+                            <div class="icono-social twitter">
+                                <i class="fab fa-twitter"></i>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="cambiar-formulario">
+                        ¿Ya tienes una cuenta? <a id="cambiar-a-login">Inicia sesión AQUÍ</a>
+                    </div>
+                </form>
+                
+                <!-- Formulario de Login -->
+                <form class="formulario-login" id="formulario-login">
+                    <div class="modal-header">
+                        <h2 class="modal-titulo">INICIAR SESIÓN</h2>
+                        <p class="modal-subtitulo">Bienvenido de nuevo</p>
+                    </div>
+                    
+                    <div class="grupo-formulario">
+                        <label for="login-usuario">Nombre de usuario</label>
+                        <input type="text" id="login-usuario" name="nombre_usuario" placeholder="Ingresa tu nombre de usuario" required>
+                        <div class="mensaje-error" id="error-login-usuario"></div>
+                    </div>
+                    
+                    <div class="grupo-formulario">
+                        <label for="login-contrasena">Contraseña</label>
+                        <input type="password" id="login-contrasena" name="contrasena" placeholder="Ingresa tu contraseña" required>
+                        <div class="mensaje-error" id="error-login-contrasena"></div>
+                    </div>
+                    
+                    <button type="submit" class="btn-enviar">INICIAR SESIÓN</button>
+                    
+                    <div class="login-social">
+                        <p>o mediante redes sociales</p>
+                        <div class="iconos-sociales">
+                            <div class="icono-social facebook">
+                                <i class="fab fa-facebook-f"></i>
+                            </div>
+                            <div class="icono-social google">
+                                <i class="fab fa-google"></i>
+                            </div>
+                            <div class="icono-social twitter">
+                                <i class="fab fa-twitter"></i>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="cambiar-formulario">
+                        ¿No tienes una cuenta? <a id="cambiar-a-registro">Regístrate AQUÍ</a>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+   <script src="../src/components/public/js/panel-principal.js"></script>
 </body>
 </html>

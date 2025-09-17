@@ -7,6 +7,9 @@ EPIC-UC/
 │   ├── src/                      
 │   │   ├── componentes/          # Componentes reutilizables
 │   │   │   ├── public/           # css y js de los .html
+│   │   │       ├── css/          # css
+│   │   │       ├── js/           # js
+│   │   │       ├── images/       # images
 │   │   │   ├── ui/               # Botones, inputs, modales, etc.
 │   │   │   ├── layout/           # Navbar, Sidebar, Footer, Layout general
 │   │   │   ├── juegos/           # Componentes relacionados con juegos
