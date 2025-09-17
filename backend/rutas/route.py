@@ -1,6 +1,5 @@
 from flask import Flask
 
-# ✅ Importar los Blueprints, no las funciones
 from backend.rutas.route_amigos import route_amigos
 from backend.rutas.route_biblioteca_usuario import route_biblioteca_usuario
 from backend.rutas.route_carrito_compras import route_carrito_compras
@@ -23,7 +22,6 @@ from backend.rutas.route_usuario_logros import route_usuario_logros
 from backend.rutas.route_usuarios import route_usuarios
 from backend.rutas.route_wishlist_deseos import route_wishlist_deseos
 
-# ✅ Registrar los Blueprints
 def rutas(app: Flask):
     app.register_blueprint(route_amigos)
     app.register_blueprint(route_biblioteca_usuario)
