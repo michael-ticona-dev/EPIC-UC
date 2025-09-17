@@ -9,7 +9,7 @@ def conexion_database():
         conexion = psycopg2.connect(
             dbname='epic-uc',
             user='postgres',
-            password='tutiopanchito',
+            password='251204',
             host='localhost',
             port='5432'
         )
