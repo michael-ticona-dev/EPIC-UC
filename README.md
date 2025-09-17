@@ -93,6 +93,7 @@ Logs optimizados para evitar sobrecarga de disco
 Monitoreo de recursos para mantener estabilidad
 
 🔹 Instalación
+
 Python
 PostgreSQL
 pip install -r requirements.txt

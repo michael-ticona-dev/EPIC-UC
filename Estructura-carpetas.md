@@ -1,9 +1,7 @@
 EPIC-UC/                          
 ├── frontend/                     
 │   ├── public/                   
-│   │   ├── index.html            
-│   │   ├── favicon.ico           
-│   │   └── manifest.json         
+│   │   ├── index.html                    
 │   ├── src/                      
 │   │   ├── componentes/          # Componentes reutilizables
 │   │   │   ├── public/           # css y js de los .html
