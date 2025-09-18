@@ -1,0 +1,211 @@
+/* ========================= */
+/* CONTENEDOR PRINCIPAL      */
+/* ========================= */
+.carta {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 2rem;
+  padding: 1.5rem 2rem;
+  background-color: #ffffff;
+  border-radius: 1rem;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+  margin: 10px;
+  align-items: center;
+}
+
+/* ========================= */
+/* IMAGEN DE LA CARTA        */
+/* ========================= */
+.carta img {
+  width: 100%;
+  max-width: 400px;
+  height: auto;
+  border-radius: 0.5rem;
+  object-fit: cover;
+  margin-left: 7rem;
+}
+
+/* ========================= */
+/* SECCIÓN BOTÓN Y TEXTO     */
+/* ========================= */
+.section-btn-carta {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  padding: 2rem;
+  box-sizing: border-box;
+  text-align: center;
+  margin: 0 2rem;
+}
+
+.section-btn-carta p {
+  text-align: center;
+  color: #555;
+  line-height: 1.6;
+  font-size: 1.1rem;
+  margin: 0;
+}
+
+.section-btn-carta p strong {
+  color: #a50000;
+  font-weight: 600;
+}
+
+/* ========================= */
+/* MODAL (VENTANA EMERGENTE) */
+/* ========================= */
+.modal {
+  position: fixed;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.7);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+  opacity: 0;
+  visibility: hidden;
+  transform: scale(1.05);
+  transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+.modal.active {
+  opacity: 1;
+  visibility: visible;
+  transform: scale(1);
+}
+
+.modal-content {
+  background: #fff;
+  width: 70%;
+  max-width: 900px;
+  height: 90%;
+  border-radius: 8px;
+  padding: 20px;
+  position: relative;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+  overflow: hidden;
+}
+
+.modal-content iframe {
+  width: 100%;
+  height: 100%;
+  border: none;
+  border-radius: 4px;
+}
+
+/* ========================= */
+/* BOTÓN DE CERRAR           */
+/* ========================= */
+#btn-cerrar-carta {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  width: 40px;
+  height: 40px;
+  background-color: #a50000;
+  color: #fff;
+  font-size: 20px;
+  font-weight: bold;
+  border: none;
+  border-radius: 50%;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.25);
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+#btn-cerrar-carta:hover {
+  background-color: #ff1a1a;
+  transform: scale(1.05);
+}
+
+#btn-cerrar-carta:active {
+  transform: scale(0.95);
+}
+
+/* ========================= */
+/* MEDIA QUERIES RESPONSIVE  */
+/* ========================= */
+@media (max-width: 1024px) {
+  .carta {
+    grid-template-columns: 1fr;
+    padding: 1.5rem;
+    text-align: center;
+    justify-items: center;
+  }
+
+  .carta img {
+    max-width: 300px;
+    margin: 0 auto 1rem;
+  }
+
+  .section-btn-carta {
+    margin: 0 auto;
+    padding: 1.5rem;
+    gap: 1.5rem;
+    width: 100%;
+    max-width: 500px;
+  }
+
+  .modal-content {
+    width: 90%;
+    height: 85%;
+    padding: 15px;
+  }
+}
+
+@media (max-width: 600px) {
+  .carta {
+    padding: 1rem;
+    margin: 0.5rem;
+  }
+
+  .carta img {
+    max-width: 220px;
+    width: 80%;
+    height: auto;
+  }
+
+  .section-btn-carta {
+    padding: 1rem;
+    margin: 0 auto;
+    gap: 1rem;
+    width: 100%;
+    max-width: 450px;
+  }
+
+  .section-btn-carta p {
+    font-size: 0.95rem;
+  }
+
+  .modal-content {
+    width: 98%;
+    height: 90%;
+    padding: 10px;
+  }
+
+  #btn-cerrar-carta {
+    top: 10px;
+    right: 10px;
+    font-size: 16px;
+    width: 30px;
+    height: 30px;
+  }
+}
+
+@media (max-width: 360px) {
+  .section-btn-carta p {
+    font-size: 0.85rem;
+  }
+
+  .carta img {
+    max-width: 180px;
+  }
+}

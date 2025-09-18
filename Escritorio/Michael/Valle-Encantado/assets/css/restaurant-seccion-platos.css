@@ -1,0 +1,188 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+
+/* ========================= */
+/* VARIABLES GLOBALES        */
+/* ========================= */
+:root {
+    --primary-color: #e17726;
+    --secondary-color: #7b451c;
+    --accent-color: #e74c3c;
+    --light-color: #ecf0f1;
+    --dark-color: #6c3a14;
+    --success-color: #27ae60;
+    --warning-color: #f39c12;
+    --error-color: #e74c3c;
+}
+
+/* ========================= */
+/* ESTILOS BASE              */
+/* ========================= */
+body {
+    font-family: 'Poppins', sans-serif;
+}
+
+/* ========================= */
+/* TÍTULO DE SECCIÓN         */
+/* ========================= */
+.toggle-platos {
+  cursor: pointer;
+  background-color: #f8f8f8;
+  padding: 12px 15px;
+  border-radius: 8px;
+  font-size: 1.2em;
+  margin: 10px 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  transition: all 0.3s ease;
+}
+
+.toggle-platos:hover {
+  background-color: #e0e0e0;
+}
+
+.toggle-platos::after {
+  content: "▼";
+  font-size: 0.8em;
+  transition: transform 0.3s ease;
+  margin-left: 10px;
+}
+
+.toggle-platos.abierto::after {
+  transform: rotate(180deg);
+}
+
+/* ========================= */
+/* CONTENEDOR DE PLATOS      */
+/* ========================= */
+.contenedor-platos {
+  padding-left: 15px;
+  border-left: 2px solid #ddd;
+  margin-left: 10px;
+  transition: all 0.3s ease;
+}
+
+.contenedor-platos.visible {
+  display: block;
+}
+
+/* ========================= */
+/* ITEM DE PLATO             */
+/* ========================= */
+.plato-item {
+  display: block;
+  width: 100%;
+  margin-bottom: 15px;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  overflow: hidden;
+  transition: all 0.3s ease;
+}
+
+.plato-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px 15px;
+  background-color: #f8f8f8;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.plato-header:hover {
+  background-color: #eee;
+}
+
+.plato-titulo {
+  font-weight: bold;
+  flex-grow: 1;
+}
+
+/* ========================= */
+/* ESTILOS DE BOTONES        */
+/* ========================= */
+.plato-controles {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+}
+
+/* ========================= */
+/* CLASES UTILITARIAS        */
+/* ========================= */
+.oculto {
+  display: none;
+}
+
+.visible {
+  display: block;
+}
+
+/* ========================= */
+/* MEDIA QUERIES MÓVILES     */
+/* ========================= */
+@media only screen and (max-width: 768px) {
+  body {
+    font-size: 14px;
+  }
+  
+  .toggle-platos {
+    padding: 10px 12px;
+    font-size: 1.1em;
+  }
+  
+  .contenedor-platos {
+    padding-left: 10px;
+    margin-left: 5px;
+  }
+  
+  .plato-item {
+    margin-bottom: 10px;
+  }
+  
+  .plato-header {
+    padding: 10px 12px;
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  
+  .plato-titulo {
+    margin-bottom: 8px;
+    width: 100%;
+  }
+  
+  .plato-controles {
+    width: 100%;
+    justify-content: flex-end;
+  }
+  
+  .plato-descripcion.visible {
+    max-height: 300px;
+    padding: 10px 12px;
+  }
+  
+  .plato-descripcion {
+    line-height: 1.5;
+  }
+}
+
+@media only screen and (max-width: 480px) {
+  .toggle-platos {
+    font-size: 1em;
+    padding: 8px 10px;
+  }
+  
+  .plato-header {
+    padding: 8px 10px;
+  }
+  
+  .plato-controles {
+    gap: 5px;
+  }
+  
+  .plato-controles button {
+    padding: 6px 10px;
+    font-size: 0.9em;
+  }
+}
+

@@ -1,0 +1,591 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+
+/* ========================= */
+/* ESTILOS BASE              */
+/* ========================= */
+* {
+  box-sizing: border-box;
+  font-family: 'Poppins', sans-serif;
+}
+
+:root {
+    --color-primario: #e17726;
+    --color-secundario: #f8f9fa;
+    --color-accento: #d8b4a0;
+    --color-oscuro: #333;
+    --color-claro: #fff;
+    --color-texto: #555;
+    --color-texto-claro: #777;
+    --borde-redondeado: 8px;
+    --sombra: 0 5px 15px rgba(0, 0, 0, 0.1);
+    --transicion: all 0.3s ease;
+    --botones: #d66814;
+    --botones-2: #8e4309;
+}
+
+body {
+  background-color: #f5f5f5;
+  margin: 0;
+  padding: 20px;
+  color: #333;
+}
+
+/* ========================= */
+/* CONTENEDOR PRINCIPAL      */
+/* ========================= */
+.contenedor-principal {
+  max-width: 800px;
+  margin: 0 auto;
+  background-color: white;
+  border-radius: 10px;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+  padding: 30px;
+  overflow: hidden;
+}
+
+/* ========================= */
+/* TIPOGRAFÍA Y TEXTOS       */
+/* ========================= */
+.titulo {
+  text-align: center;
+  color: var(--color-primario);
+  margin-bottom: 30px;
+  font-size: 2.2em;
+}
+
+.texto-paso {
+  font-size: 14px;
+  color: #666;
+}
+
+.resumen-titulo {
+  font-weight: bold;
+  color: var(--color-primario);
+}
+
+/* ========================= */
+/* SISTEMA DE PASOS          */
+/* ========================= */
+.paso {
+  display: none;
+  animation: fadeIn 0.5s ease-in-out;
+}
+
+.paso.activo {
+  display: block;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.progreso {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 30px;
+  position: relative;
+}
+
+.progreso::before {
+  content: '';
+  position: absolute;
+  top: 15px;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background-color: #ddd;
+  z-index: 1;
+}
+
+.paso-progreso {
+  text-align: center;
+  z-index: 2;
+}
+
+.paso-progreso.activo .texto-paso {
+  color: var(--color-primario);
+  font-weight: bold;
+}
+
+.circulo-progreso {
+  width: 30px;
+  height: 30px;
+  background-color: #ddd;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 5px;
+  color: #666;
+  font-weight: bold;
+}
+
+.paso-progreso.activo .circulo-progreso {
+  background-color: var(--botones);
+  color: white;
+}
+
+/* ========================= */
+/* FORMULARIO GENERAL        */
+/* ========================= */
+.grupo-formulario {
+  margin-bottom: 20px;
+}
+
+.etiqueta {
+  display: block;
+  margin-bottom: 8px;
+  font-weight: bold;
+  color: #555;
+}
+
+.entrada {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  font-size: 16px;
+  transition: border 0.3s;
+}
+
+.entrada:focus {
+  border-color: var(--botones);
+  outline: none;
+}
+
+/* ========================= */
+/* BOTONES                   */
+/* ========================= */
+.boton {
+  background-color: var(--botones);
+  color: white;
+  border: none;
+  padding: 12px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+  transition: background-color 0.3s;
+}
+
+.boton:hover {
+  background-color: var(--botones-2);
+}
+
+.boton-anterior {
+  background-color: #666;
+}
+
+.boton-anterior:hover {
+  background-color: #555;
+}
+
+.contenedor-botones {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 30px;
+}
+
+#siguiente-1 {
+  margin-left: auto;
+}
+
+/* ========================= */
+/* SELECTOR DE PERSONAS      */
+/* ========================= */
+.botones-personas {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+.boton-persona {
+  flex: 1 0 calc(20% - 10px);
+  min-width: 60px;
+  padding: 10px;
+  background-color: #f0f0f0;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: all 0.3s;
+  font-size: 16px;
+}
+
+.boton-persona:hover,
+.boton-persona.seleccionado {
+  background-color: var(--botones);
+  color: white;
+  border-color: var(--botones);
+}
+
+/* ========================= */
+/* OPCIÓN DE MENÚ            */
+/* ========================= */
+.opcion-menu {
+  display: flex;
+  align-items: center;
+  margin-bottom: 15px;
+  padding: 15px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  transition: all 0.3s;
+  cursor: pointer;
+}
+
+.opcion-menu:hover {
+  border-color: var(--botones);
+}
+
+.opcion-menu input[type="radio"] {
+  margin-right: 15px;
+}
+
+.opcion-menu-info {
+  flex-grow: 1;
+}
+
+.opcion-menu-titulo {
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+
+.opcion-menu-descripcion {
+  color: #666;
+  font-size: 14px;
+}
+
+/* ========================= */
+/* CONTROLES DE CANTIDAD     */
+/* ========================= */
+.controles-cantidad {
+  display: flex;
+  align-items: center;
+}
+
+.boton-cantidad {
+  width: 30px;
+  height: 30px;
+  background-color: var(--botones);
+  color: white;
+  border: none;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  margin: 0 5px;
+}
+
+.boton-cantidad:hover {
+  background-color: var(--botones-2);
+}
+
+.cantidad-plato {
+  min-width: 30px;
+  text-align: center;
+  font-weight: bold;
+}
+
+/* ========================= */
+/* LISTA DE PLATOS           */
+/* ========================= */
+.lista-platos {
+  margin-top: 20px;
+  border-top: 1px solid #eee;
+  padding-top: 20px;
+}
+
+.plato-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 0;
+  border-bottom: 1px solid #eee;
+}
+
+.plato-nombre {
+  flex-grow: 1;
+}
+
+.plato-cantidad {
+  display: flex;
+  align-items: center;
+}
+
+.boton-eliminar {
+  background-color: #ff6b6b;
+  color: white;
+  border: none;
+  border-radius: 3px;
+  padding: 3px 8px;
+  margin-left: 10px;
+  cursor: pointer;
+}
+
+.boton-eliminar:hover {
+  background-color: #ff5252;
+}
+
+/* ========================= */
+/* RESUMEN DE RESERVA        */
+/* ========================= */
+.resumen-reserva {
+  background-color: #f9f9f9;
+  padding: 20px;
+  border-radius: 5px;
+  margin-top: 20px;
+  border-left: 4px solid var(--color-primario);
+}
+
+.resumen-item {
+  margin-bottom: 10px;
+}
+
+.resumen-platos {
+  margin-top: 15px;
+  padding-top: 15px;
+  border-top: 1px dashed #ccc;
+}
+
+.resumen-plato {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 5px;
+}
+
+/* ========================= */
+/* MENSAJE DE PROMOCIÓN      */
+/* ========================= */
+.mensaje-promocion {
+  margin-top: 20px;
+  padding: 14px 18px;
+  background-color: #fff8ec;
+  border: 1px solid #e0c3a0;
+  border-radius: 16px;
+  text-align: center;
+  font-size: 0.85rem;
+  color: #5c4033;
+  font-weight: 500;
+  font-family: 'Segoe UI', sans-serif;
+  box-shadow: 0 3px 6px rgba(92, 64, 51, 0.1);
+  animation: aparecer 0.5s ease-out;
+  max-width: 750px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.promo-final {
+  display: inline-block;
+  margin-top: 8px;
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: #d9480f;
+}
+
+@keyframes aparecer {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* ========================= */
+/* ELEMENTOS INTERACTIVOS    */
+/* ========================= */
+#click-fecha {
+  cursor: pointer;
+}
+
+#click-fecha input {
+  cursor: pointer;
+}
+
+/* ========================= */
+/* DISEÑO RESPONSIVE         */
+/* ========================= */
+@media (max-width: 768px) {
+  body {
+    padding: 8px;
+    font-size: 15px;
+  }
+
+  .contenedor-principal {
+    padding: 15px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  }
+
+  .titulo {
+    font-size: 1.6em;
+    margin-bottom: 15px;
+  }
+
+  .progreso {
+    margin-bottom: 15px;
+  }
+
+  .progreso::before {
+    top: 12px;
+  }
+
+  .circulo-progreso {
+    width: 24px;
+    height: 24px;
+    font-size: 13px;
+  }
+
+  .texto-paso {
+    font-size: 11px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 60px;
+  }
+
+  .entrada {
+    padding: 10px;
+    font-size: 15px;
+  }
+
+  .botones-personas {
+    gap: 6px;
+  }
+
+  .boton-persona {
+    flex: 1 0 calc(25% - 6px);
+    min-width: auto;
+    padding: 8px 4px;
+    font-size: 13px;
+  }
+
+  .opcion-menu {
+    padding: 12px;
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .opcion-menu input[type="radio"] {
+    margin-right: 0;
+    margin-bottom: 8px;
+  }
+
+  .controles-cantidad {
+    margin-top: 10px;
+    align-self: flex-end;
+  }
+
+  .boton-cantidad {
+    width: 28px;
+    height: 28px;
+  }
+
+  .boton {
+    padding: 10px 16px;
+    font-size: 15px;
+    width: 48%;
+    box-sizing: border-box;
+  }
+
+  .contenedor-botones {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+  }
+
+  .plato-item {
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 8px 0;
+  }
+
+  .plato-cantidad {
+    margin-top: 8px;
+  }
+
+  .boton-eliminar {
+    padding: 4px 8px;
+    margin-left: 8px;
+  }
+}
+
+@media (max-width: 480px) {
+  body {
+    padding: 5px;
+  }
+
+  .contenedor-principal {
+    padding: 12px;
+    border-radius: 6px;
+  }
+
+  .titulo {
+    font-size: 1.4em;
+  }
+
+  .progreso {
+    gap: 4px;
+  }
+
+  .circulo-progreso {
+    width: 20px;
+    height: 20px;
+    font-size: 11px;
+  }
+
+  .texto-paso {
+    font-size: 9px;
+    max-width: 50px;
+  }
+
+  .botones-personas {
+    gap: 5px;
+  }
+
+  .boton-persona {
+    flex: 1 0 calc(50% - 5px);
+    padding: 8px 2px;
+    font-size: 12px;
+  }
+
+  .grupo-formulario {
+    margin-bottom: 15px;
+  }
+
+  .entrada {
+    padding: 8px 10px;
+  }
+
+  .boton {
+    width: 100%;
+    margin-bottom: 8px;
+  }
+
+  .contenedor-botones {
+    flex-direction: column;
+  }
+
+  .resumen-reserva {
+    padding: 12px;
+  }
+
+  .resumen-platos {
+    margin-top: 10px;
+    padding-top: 10px;
+  }
+}
+
+@media (hover: none) {
+  .boton, 
+  .boton-persona, 
+  .boton-cantidad, 
+  .boton-eliminar {
+    transition: none;
+  }
+
+  .boton:active, 
+  .boton-persona:active, 
+  .boton-cantidad:active, 
+  .boton-eliminar:active {
+    transform: scale(0.96);
+  }
+}

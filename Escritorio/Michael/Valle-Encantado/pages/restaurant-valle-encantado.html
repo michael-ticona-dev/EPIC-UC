@@ -1,0 +1,1550 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reservas - Valle Encantado</title>
+    <link rel="stylesheet" href="../assets/css/restaurant-reservacion.css">
+    <link rel="stylesheet" href="../assets/css/restaurant-seccion-platos.css">
+    <link rel="stylesheet" href="../assets/css/restaurant-despliegue.css">
+    <link rel="stylesheet" href="../assets/css/restaurant-politica-datos.css">
+</head>
+<body>
+    <div class="contenedor-principal">
+        <h1 class="titulo">Reserva en Valle Encantado</h1>
+        
+        <!-- ========================= -->
+        <!-- BARRA DE PROGRESO         -->
+        <!-- ========================= -->
+        <div class="progreso">
+            <div class="paso-progreso activo" data-paso="1">
+                <div class="circulo-progreso">1</div>
+                <div class="texto-paso">Personas</div>
+            </div>
+            <div class="paso-progreso" data-paso="2">
+                <div class="circulo-progreso">2</div>
+                <div class="texto-paso">Fecha y Hora</div>
+            </div>
+            <div class="paso-progreso" data-paso="3">
+                <div class="circulo-progreso">3</div>
+                <div class="texto-paso">Tus Datos</div>
+            </div>
+            <div class="paso-progreso" data-paso="4">
+                <div class="circulo-progreso">4</div>
+                <div class="texto-paso">Selección de Platos</div>
+            </div>
+            <div class="paso-progreso" data-paso="5">
+                <div class="circulo-progreso">5</div>
+                <div class="texto-paso">Confirmación</div>
+            </div>
+        </div>
+        
+        <!-- ========================= -->
+        <!-- PASO 1: NÚMERO PERSONAS   -->
+        <!-- ========================= -->
+        <div class="paso activo" id="paso-1">
+            <h2>¿Cuántas personas?</h2>
+            <div class="botones-personas">
+                <button class="boton-persona" data-personas="10">10</button>
+                <button class="boton-persona" data-personas="11">11</button>
+                <button class="boton-persona" data-personas="12">12</button>
+                <button class="boton-persona" data-personas="13">13</button>
+                <button class="boton-persona" data-personas="14">14</button>
+                <button class="boton-persona" data-personas="15">15</button>
+                <button class="boton-persona" data-personas="16">16</button>
+                <button class="boton-persona" data-personas="17">17</button>
+                <button class="boton-persona" data-personas="18">18</button>
+                <button class="boton-persona" data-personas="19">19</button>
+                <button class="boton-persona" data-personas="20">20</button>
+                <button class="boton-persona" data-personas="mas">+</button>
+            </div>
+
+            <!-- ========================= -->
+            <!-- PROMOCIÓN GRUPOS GRANDES  -->
+            <!-- ========================= -->
+            <div class="mensaje-promocion" id="mensaje-promocion">
+                🎉 <strong>¡Atención!</strong> Para reservas mayores a <strong>20 personas</strong>, ofrecemos <strong>jarras de jugo</strong> de cortesía, <strong>una vez durante tu visita</strong>. 🧃  
+                <br><br>
+                ¡Celebra con nosotros a lo grande! 🥳
+            </div>
+            
+            <!-- ========================= -->
+            <!-- GRUPO PERSONALIZADO      -->
+            <!-- ========================= -->
+            <div class="grupo-formulario" id="grupo-personas-personalizado" style="display: none;">
+                <label for="personas-personalizado" class="etiqueta">Número exacto de personas:</label>
+                <input type="number" id="personas-personalizado" class="entrada" min="1" placeholder="Ej: 25">
+            </div>
+            
+            <!-- ========================= -->
+            <!-- BOTONES NAVEGACIÓN      -->
+            <!-- ========================= -->
+            <div class="contenedor-botones">
+                <button class="boton boton-siguiente" id="siguiente-1">Siguiente</button>
+            </div>
+        </div>
+        
+        <!-- ========================= -->
+        <!-- PASO 2: FECHA Y HORA     -->
+        <!-- ========================= -->
+        <div class="paso" id="paso-2">
+            <h2>Fecha y hora de la reserva</h2>
+            
+            <!-- ========================= -->
+            <!-- SELECTOR FECHA           -->
+            <!-- ========================= -->
+            <div class="grupo-formulario" id="click-fecha">
+                <label for="fecha" class="etiqueta">Fecha:</label>
+                <input type="date" id="fecha" class="entrada" required>
+            </div>
+
+            <!-- ========================= -->
+            <!-- SELECTOR HORA            -->
+            <!-- ========================= -->
+            <div class="grupo-formulario">
+                <label for="hora" class="etiqueta">Hora (entre 10:00 y 16:00):</label>
+                <select id="hora" class="entrada" required>
+                    <option value="">Selecciona una hora</option>
+                    <option value="10:00">10:00 AM</option>
+                    <option value="11:00">11:00 AM</option>
+                    <option value="12:00">12:00 PM</option>
+                    <option value="13:00">1:00 PM</option>
+                    <option value="14:00">2:00 PM</option>
+                    <option value="15:00">3:00 PM</option>
+                    <option value="16:00">4:00 PM</option>
+                </select>
+            </div>
+            
+            <!-- ========================= -->
+            <!-- BOTONES NAVEGACIÓN      -->
+            <!-- ========================= -->
+            <div class="contenedor-botones">
+                <button class="boton boton-anterior" id="anterior-2">Anterior</button>
+                <button class="boton boton-siguiente" id="siguiente-2">Siguiente</button>
+            </div>
+        </div>
+        
+        <!-- ========================= -->
+        <!-- PASO 3: DATOS PERSONALES  -->
+        <!-- ========================= -->
+        <div class="paso" id="paso-3">
+            <h2>Tus datos</h2>
+            
+            <!-- ========================= -->
+            <!-- CAMPO NOMBRE             -->
+            <!-- ========================= -->
+            <div class="grupo-formulario">
+                <label for="nombre" class="etiqueta">Nombre completo:</label>
+                <input type="text" id="nombre" class="entrada" required>
+            </div>
+            
+            <!-- ========================= -->
+            <!-- CAMPO TELÉFONO           -->
+            <!-- ========================= -->
+            <div class="grupo-formulario">
+                <label for="telefono" class="etiqueta">Teléfono:</label>
+                <input type="tel" id="telefono" class="entrada" required>
+            </div>
+            
+            <!-- ========================= -->
+            <!-- CAMPO EMAIL              -->
+            <!-- ========================= -->
+            <div class="grupo-formulario">
+                <label for="email" class="etiqueta">Correo electrónico:</label>
+                <input type="email" id="email" class="entrada" required>
+            </div>
+
+            <!-- ========================= -->
+            <!-- CHECKBOX POLÍTICA        -->
+            <!-- ========================= -->
+            <label class="checkbox-personalizado">
+                <input type="checkbox" name="acepta_publicidad" id="checkbox-publicidad">
+                <span class="checkmark"></span>
+                Acepto la
+                <a href="#" id="ver-politica">Política de Privacidad</a>
+            </label>
+
+            <!-- ========================= -->
+            <!-- MODAL POLÍTICA DATOS     -->
+            <!-- ========================= -->
+            <div id="modal-politica" class="modal oculto">
+               <div class="modal-contenido">
+                    <span class="cerrar" title="Cerrar política">&times;</span>
+                    
+                    <h2>Política de Privacidad</h2>
+                    <p>En <strong>Valle Encantado</strong> valoramos y respetamos tu privacidad. Esta política explica cómo tratamos la información que nos proporcionas al realizar una reserva.</p>
+
+                    <h3>¿Qué datos recopilamos?</h3>
+                    <p>Recopilamos únicamente los datos necesarios para gestionar tu reserva:</p>
+                    <ul>
+                        <li>Nombre completo</li>
+                        <li>Número de teléfono o correo electrónico de contacto</li>
+                        <li>Fecha, hora y número de personas para la reserva</li>
+                    </ul>
+
+                    <h3>¿Para qué usamos tus datos?</h3>
+                    <ul>
+                        <li>Confirmar y coordinar tu reserva</li>
+                        <li>Contactarte en caso de cambios, imprevistos o consultas relacionadas con tu reserva</li>
+                    </ul>
+
+                    <h3>¿Compartimos tus datos?</h3>
+                    <p>No. La información que nos proporcionas es confidencial y no se comparte con terceros bajo ninguna circunstancia, salvo que sea requerido por ley.</p>
+
+                    <h3>Conservación de los datos</h3>
+                    <p>Tus datos se conservarán solo el tiempo necesario para gestionar tu reserva y cumplir con obligaciones legales. Posteriormente serán eliminados de forma segura.</p>
+
+                    <h3>Seguridad</h3>
+                    <p>Implementamos medidas técnicas y organizativas para proteger tu información contra accesos no autorizados, uso indebido o divulgación.</p>
+
+                    <h3>Ejercicio de derechos</h3>
+                    <p>Puedes solicitar la rectificación o eliminación de tus datos escribiéndonos a 
+                        <a href="mailto:vallencantado@gmail.com">vallencantado@gmail.com</a> 
+                        o llamando al número de contacto oficial del restaurante.
+                    </p>
+
+                    <p>Al confirmar tu reserva, aceptas los términos de esta política.</p>
+                </div>
+            </div>
+            
+            <!-- ========================= -->
+            <!-- BOTONES NAVEGACIÓN      -->
+            <!-- ========================= -->
+            <div class="contenedor-botones">
+                <button class="boton boton-anterior" id="anterior-3">Anterior</button>
+                <button class="boton boton-siguiente" id="siguiente-3">Siguiente</button>
+            </div>
+        </div>
+        
+        <!-- ========================= -->
+        <!-- PASO 4: SELECCIÓN PLATOS -->
+        <!-- ========================= -->
+        <div class="paso" id="paso-4">
+            <h2>Selección de platos</h2>
+            
+            <!-- ========================= -->
+            <!-- OPCIONES DE MENÚ         -->
+            <!-- ========================= -->
+            <div class="grupo-formulario" id="seleccion-menu">
+                <label class="etiqueta">¿Cómo prefieres seleccionar tus platos?</label>
+                
+                <div class="opcion-menu" data-radio="opcion-carta">
+                    <input type="radio" id="opcion-carta" name="opcion-menu" value="carta" checked>
+                    <div class="opcion-menu-info">
+                        <div class="opcion-menu-titulo">Ver carta en el restaurante</div>
+                        <div class="opcion-menu-descripcion">Seleccionarás tus platos al llegar al restaurante</div>
+                    </div>
+                </div>
+                
+                <div class="opcion-menu" data-radio="opcion-seleccionar">
+                    <input type="radio" id="opcion-seleccionar" name="opcion-menu" value="seleccionar">
+                    <div class="opcion-menu-info">
+                        <div class="opcion-menu-titulo">Seleccionar platos ahora</div>
+                        <div class="opcion-menu-descripcion">Elige tus platos preferidos con anticipación</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ========================= -->
+            <!-- SECCIÓN SELECCIÓN PLATOS -->
+            <!-- ========================= -->
+            <div id="seleccion-platos" style="display: none;">
+                <h3>Nuestros platos destacados</h3>
+                
+                <div class="lista-platos">
+                    <!-- ========================= -->
+                    <!-- ENTRADAS PARA COMPARTIR   -->
+                    <!-- ========================= -->
+                    <div class="seccion-platos">
+                        <h2 class="toggle-platos">🍤 Entradas para compartir</h2>
+                        <div class="contenedor-platos oculto">
+
+                            <div class="plato-item">
+                                <div class="plato-header">
+                                    <div class="plato-titulo">Tequeños de queso</div>
+                                    <div class="plato-controles">
+                                        <button class="boton-cantidad boton-reducir" data-plato="tequenos-de-queso">-</button>
+                                        <span class="cantidad-plato" data-plato="tequenos-de-queso">0</span>
+                                        <button class="boton-cantidad boton-aumentar" data-plato="tequenos-de-queso">+</button>
+                                        <button class="boton-eliminar" data-plato="tequenos-de-queso">Eliminar</button>
+                                        <span class="toggle-icon">▼</span>
+                                    </div>
+                                </div>
+                                <div class="plato-descripcion oculto">
+                                    <div class="plato-detalle">
+                                        <div class="texto-detalle">
+                                            <div class="texto-info">
+                                                <p>Crujientes tequeños rellenos de queso derretido, acompañados de salsa de la casa.</p>
+                                                <span class="precio-plato">S/ 15.00</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="plato-item">
+                                <div class="plato-header">
+                                    <div class="plato-titulo">Tequeños de mariscos</div>
+                                    <div class="plato-controles">
+                                        <button class="boton-cantidad boton-reducir" data-plato="tequenos-de-mariscos">-</button>
+                                        <span class="cantidad-plato" data-plato="tequenos-de-mariscos">0</span>
+                                        <button class="boton-cantidad boton-aumentar" data-plato="tequenos-de-mariscos">+</button>
+                                        <button class="boton-eliminar" data-plato="tequenos-de-mariscos">Eliminar</button>
+                                        <span class="toggle-icon">▼</span>
+                                    </div>
+                                </div>
+                                <div class="plato-descripcion oculto">
+                                    <div class="plato-detalle">
+                                        <div class="texto-detalle">
+                                            <div class="texto-info">
+                                                <p>Tequeños rellenos de una mezcla de mariscos salteados y queso, empanizados y fritos hasta dorar.</p>
+                                                <span class="precio-plato">S/ 17.00</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="plato-item">
+                                <div class="plato-header">
+                                    <div class="plato-titulo">Tequeños de rocoto relleno</div>
+                                    <div class="plato-controles">
+                                        <button class="boton-cantidad boton-reducir" data-plato="tequenos-de-rocoto-relleno">-</button>
+                                        <span class="cantidad-plato" data-plato="tequenos-de-rocoto-relleno">0</span>
+                                        <button class="boton-cantidad boton-aumentar" data-plato="tequenos-de-rocoto-relleno">+</button>
+                                        <button class="boton-eliminar" data-plato="tequenos-de-rocoto-relleno">Eliminar</button>
+                                        <span class="toggle-icon">▼</span>
+                                    </div>
+                                </div>
+                                <div class="plato-descripcion oculto">
+                                    <div class="plato-detalle">
+                                        <div class="texto-detalle">
+                                            <div class="texto-info">
+                                                <p>Tequeños rellenos de rocoto arequipeño relleno con carne, queso y hierbas, empanizados y fritos.</p>
+                                                <span class="precio-plato">S/ 17.00</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="plato-item">
+                                <div class="plato-header">
+                                    <div class="plato-titulo">Piqueo del valle</div>
+                                    <div class="plato-controles">
+                                        <button class="boton-cantidad boton-reducir" data-plato="piqueo-del-valle">-</button>
+                                        <span class="cantidad-plato" data-plato="piqueo-del-valle">0</span>
+                                        <button class="boton-cantidad boton-aumentar" data-plato="piqueo-del-valle">+</button>
+                                        <button class="boton-eliminar" data-plato="piqueo-del-valle">Eliminar</button>
+                                        <span class="toggle-icon">▼</span>
+                                    </div>
+                                </div>
+                                <div class="plato-descripcion oculto">
+                                    <div class="plato-detalle">
+                                        <div class="texto-detalle">
+                                            <div class="texto-info">
+                                                <p>Combinación de entradas para compartir: tequeños de queso, chicharrón de cerdo, yucas fritas y salsa criolla.</p>
+                                                <span class="precio-plato">S/ 25.00</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- ========================= -->
+                    <!-- ENTRADAS                  -->
+                    <!-- ========================= -->
+                    <div class="seccion-platos">
+                        <h2 class="toggle-platos">🌽 Entradas</h2>
+                        <div class="contenedor-platos oculto">
+
+                            <div class="plato-item">
+                                <div class="plato-header">
+                                    <div class="plato-titulo">Choclo con queso</div>
+                                    <div class="plato-controles">
+                                        <button class="boton-cantidad boton-reducir" data-plato="choclo-con-queso">-</button>
+                                        <span class="cantidad-plato" data-plato="choclo-con-queso">0</span>
+                                        <button class="boton-cantidad boton-aumentar" data-plato="choclo-con-queso">+</button>
+                                        <button class="boton-eliminar" data-plato="choclo-con-queso">Eliminar</button>
+                                        <span class="toggle-icon">▼</span>
+                                    </div>
+                                </div>
+                                <div class="plato-descripcion oculto">
+                                    <div class="plato-detalle">
+                                        <div class="texto-detalle">
+                                            <div class="texto-info">
+                                                <p>Choclo tierno sancochado servido con queso fresco.</p>
+                                                <span class="precio-plato">S/ 14.00</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="plato-item">
+                                <div class="plato-header">
+                                    <div class="plato-titulo">Pulpo al olivo</div>
+                                    <div class="plato-controles">
+                                        <button class="boton-cantidad boton-reducir" data-plato="pulpo-al-olivo">-</button>
+                                        <span class="cantidad-plato" data-plato="pulpo-al-olivo">0</span>
+                                        <button class="boton-cantidad boton-aumentar" data-plato="pulpo-al-olivo">+</button>
+                                        <button class="boton-eliminar" data-plato="pulpo-al-olivo">Eliminar</button>
+                                        <span class="toggle-icon">▼</span>
+                                    </div>
+                                </div>
+                                <div class="plato-descripcion oculto">
+                                    <div class="plato-detalle">
+                                        <div class="texto-detalle">
+                                            <div class="texto-info">
+                                                <p>Pulpo cocido en aceite de oliva con ají limo, cilantro y limón, servido sobre camote y lechuga.</p>
+                                                <span class="precio-plato">S/ 36.00</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="plato-item">
+                                <div class="plato-header">
+                                    <div class="plato-titulo">Zarsa de patitas de cerdo</div>
+                                    <div class="plato-controles">
+                                        <button class="boton-cantidad boton-reducir" data-plato="zarsa-de-patitas-de-cerdo">-</button>
+                                        <span class="cantidad-plato" data-plato="zarsa-de-patitas-de-cerdo">0</span>
+                                        <button class="boton-cantidad boton-aumentar" data-plato="zarsa-de-patitas-de-cerdo">+</button>
+                                        <button class="boton-eliminar" data-plato="zarsa-de-patitas-de-cerdo">Eliminar</button>
+                                        <span class="toggle-icon">▼</span>
+                                    </div>
+                                </div>
+                                <div class="plato-descripcion oculto">
+                                    <div class="plato-detalle">
+                                        <div class="texto-detalle">
+                                            <div class="texto-info">
+                                                <p>Patitas de cerdo sazonadas en cebolla, tomate, perejil y hierba buena.</p>
+                                                <span class="precio-plato">S/ 30.00</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="plato-item">
+                                <div class="plato-header">
+                                    <div class="plato-titulo">Leche de tigre</div>
+                                    <div class="plato-controles">
+                                        <button class="boton-cantidad boton-reducir" data-plato="leche-de-tigre">-</button>
+                                        <span class="cantidad-plato" data-plato="leche-de-tigre">0</span>
+                                        <button class="boton-cantidad boton-aumentar" data-plato="leche-de-tigre">+</button>
+                                        <button class="boton-eliminar" data-plato="leche-de-tigre">Eliminar</button>
+                                        <span class="toggle-icon">▼</span>
+                                    </div>
+                                </div>
+                                <div class="plato-descripcion oculto">
+                                    <div class="plato-detalle">
+                                        <div class="texto-detalle">
+                                            <div class="texto-info">
+                                                <p>Base de ceviche con trozos de pescado, cebolla, ají limo y cilantro.</p>
+                                                <span class="precio-plato">S/ 8.00</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="plato-item">
+                                <div class="plato-header">
+                                    <div class="plato-titulo">Yuquitas con queso</div>
+                                    <div class="plato-controles">
+                                        <button class="boton-cantidad boton-reducir" data-plato="yuquitas-con-queso">-</button>
+                                        <span class="cantidad-plato" data-plato="yuquitas-con-queso">0</span>
+                                        <button class="boton-cantidad boton-aumentar" data-plato="yuquitas-con-queso">+</button>
+                                        <button class="boton-eliminar" data-plato="yuquitas-con-queso">Eliminar</button>
+                                        <span class="toggle-icon">▼</span>
+                                    </div>
+                                </div>
+                                <div class="plato-descripcion oculto">
+                                    <div class="plato-detalle">
+                                        <div class="texto-detalle">
+                                            <div class="texto-info">
+                                                <p>Yucas sazonadas en un menjurje de la casa, empanizadas y que junto al queso son elaborados en fritura profunda.</p>
+                                                <span class="precio-plato">S/ 18.00</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div> 
+                    </div>
+
+                    <!-- ========================= -->
+                    <!-- ENSALADAS                 -->
+                    <!-- ========================= -->
+                    <div class="seccion-platos">
+                        <h2 class="toggle-platos">🥗 Ensaladas</h2>
+                        <div class="contenedor-platos oculto">
+
+                            <div class="plato-item">
+                                <div class="plato-header">
+                                    <div class="plato-titulo">Delicia de higos del valle</div>
+                                    <div class="plato-controles">
+                                        <button class="boton-cantidad boton-reducir" data-plato="delicia-de-higos-del-valle">-</button>
+                                        <span class="cantidad-plato" data-plato="delicia-de-higos-del-valle">0</span>
+                                        <button class="boton-cantidad boton-aumentar" data-plato="delicia-de-higos-del-valle">+</button>
+                                        <button class="boton-eliminar" data-plato="delicia-de-higos-del-valle">Eliminar</button>
+                                        <span class="toggle-icon">▼</span>
+                                    </div>
+                                </div>
+                                <div class="plato-descripcion oculto">
+                                    <div class="plato-detalle">
+                                        <div class="texto-detalle">
+                                            <div class="texto-info">
+                                                <p>Lechuga en corte bocado, higos, bastones de zanahoria y apio. Se acompaña de aliño de maracuyá emulsionada con aceite y azúcar.</p>
+                                                <span class="precio-plato">S/ 18.00</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div> 
+                    </div>
+
+                    <!-- ========================= -->
+                    <!-- RECOMENDACIONES DEL CHEFT -->
+                    <!-- ========================= -->
+                    <div class="seccion-platos">
+                        <h2 class="toggle-platos">👨‍🍳 Recomendaciones del chef</h2>
+                        <div class="contenedor-platos oculto">
+
+                            <div class="plato-item">
+                                <div class="plato-header">
+                                    <div class="plato-titulo">Lomo de cerdo en salsa de higos</div>
+                                    <div class="plato-controles">
+                                        <button class="boton-cantidad boton-reducir" data-plato="lomo-de-cerdo-en-salsa-de-higos">-</button>
+                                        <span class="cantidad-plato" data-plato="lomo-de-cerdo-en-salsa-de-higos">0</span>
+                                        <button class="boton-cantidad boton-aumentar" data-plato="lomo-de-cerdo-en-salsa-de-higos">+</button>
+                                        <button class="boton-eliminar" data-plato="lomo-de-cerdo-en-salsa-de-higos">Eliminar</button>
+                                        <span class="toggle-icon">▼</span>
+                                    </div>
+                                </div>
+                                <div class="plato-descripcion oculto">
+                                    <div class="plato-detalle">
+                                        <div class="texto-detalle">
+                                            <div class="texto-info">
+                                                <p>Lomo de cerdo sellado en salsa de higos.</p>
+                                                <span class="precio-plato">S/ 40.00</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="plato-item">
+                                <div class="plato-header">
+                                    <div class="plato-titulo">Costillar de cerdo a la caja china</div>
+                                    <div class="plato-controles">
+                                        <button class="boton-cantidad boton-reducir" data-plato="costillar-de-cerdo-a-la-caja-china">-</button>
+                                        <span class="cantidad-plato" data-plato="costillar-de-cerdo-a-la-caja-china">0</span>
+                                        <button class="boton-cantidad boton-aumentar" data-plato="costillar-de-cerdo-a-la-caja-china">+</button>
+                                        <button class="boton-eliminar" data-plato="costillar-de-cerdo-a-la-caja-china">Eliminar</button>
+                                        <span class="toggle-icon">▼</span>
+                                    </div>
+                                </div>
+                                <div class="plato-descripcion oculto">
+                                    <div class="plato-detalle">
+                                        <div class="texto-detalle">
+                                            <div class="texto-info">
+                                                <p>Piezas de panceta de cerdo hechos en caja china. <br>
+                                                <strong>Solo fines de semana y feriados.</strong></p>
+                                                <span class="precio-plato">S/ 45.00</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="plato-item">
+                                <div class="plato-header">
+                                    <div class="plato-titulo">Cerdo costillar de cerdo ahumado</div>
+                                    <div class="plato-controles">
+                                        <button class="boton-cantidad boton-reducir" data-plato="cerdo-costillar-de-cerdo-ahumado">-</button>
+                                        <span class="cantidad-plato" data-plato="cerdo-costillar-de-cerdo-ahumado">0</span>
+                                        <button class="boton-cantidad boton-aumentar" data-plato="cerdo-costillar-de-cerdo-ahumado">+</button>
+                                        <button class="boton-eliminar" data-plato="cerdo-costillar-de-cerdo-ahumado">Eliminar</button>
+                                        <span class="toggle-icon">▼</span>
+                                    </div>
+                                </div>
+                                <div class="plato-descripcion oculto">
+                                    <div class="plato-detalle">
+                                        <div class="texto-detalle">
+                                            <div class="texto-info">
+                                                <p>Piezas de panceta de cerdo marinadas en menjunjé de la casa y elaboradas al cilindro. <br>
+                                                <strong>Solo fines de semana y feriados.</strong></p>
+                                                <span class="precio-plato">S/ 42.00</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="plato-item">
+                                <div class="plato-header">
+                                    <div class="plato-titulo">Pollo al cilindro (1 Unidad)</div>
+                                    <div class="plato-controles">
+                                        <button class="boton-cantidad boton-reducir" data-plato="pollo-al-cilindro">-</button>
+                                        <span class="cantidad-plato" data-plato="pollo-al-cilindro">0</span>
+                                        <button class="boton-cantidad boton-aumentar" data-plato="pollo-al-cilindro">+</button>
+                                        <button class="boton-eliminar" data-plato="pollo-al-cilindro">Eliminar</button>
+                                        <span class="toggle-icon">▼</span>
+                                    </div>
+                                </div>
+                                <div class="plato-descripcion oculto">
+                                    <div class="plato-detalle">
+                                        <div class="texto-detalle">
+                                            <div class="texto-info">
+                                                <p>Pollo sazonado en cadera de casa cocinada al cilindro. Se acompaña con papas nativas fritas a doble cocción, ensalada de legumbres y rodajas de chocho. <br>
+                                                <strong>Solo fines de semana y feriados.</strong></p>
+                                                <span class="precio-plato">S/  75.00</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="plato-item">
+                                <div class="plato-header">
+                                    <div class="plato-titulo">Pollo al cilindro (1/2 Unidad)</div>
+                                    <div class="plato-controles">
+                                        <button class="boton-cantidad boton-reducir" data-plato="pollo-al-cilindro-medio">-</button>
+                                        <span class="cantidad-plato" data-plato="pollo-al-cilindro-medio">0</span>
+                                        <button class="boton-cantidad boton-aumentar" data-plato="pollo-al-cilindro-medio">+</button>
+                                        <button class="boton-eliminar" data-plato="pollo-al-cilindro-medio">Eliminar</button>
+                                        <span class="toggle-icon">▼</span>
+                                    </div>
+                                </div>
+                                <div class="plato-descripcion oculto">
+                                    <div class="plato-detalle">
+                                        <div class="texto-detalle">
+                                            <div class="texto-info">
+                                                <p>Pollo sazonado en cadera de casa cocinada al cilindro. Se acompaña con papas nativas fritas a doble cocción, ensalada de legumbres y rodajas de chocho. <br>
+                                                <strong>Solo fines de semana y feriados.</strong></p>
+                                                <span class="precio-plato">S/ 42.00</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="plato-item">
+                                <div class="plato-header">
+                                    <div class="plato-titulo">Pollo al cilindro (1/4 Unidad)</div>
+                                    <div class="plato-controles">
+                                        <button class="boton-cantidad boton-reducir" data-plato="pollo-al-cilindro-cuarto">-</button>
+                                        <span class="cantidad-plato" data-plato="pollo-al-cilindro-cuarto">0</span>
+                                        <button class="boton-cantidad boton-aumentar" data-plato="pollo-al-cilindro-cuarto">+</button>
+                                        <button class="boton-eliminar" data-plato="pollo-al-cilindro-cuarto">Eliminar</button>
+                                        <span class="toggle-icon">▼</span>
+                                    </div>
+                                </div>
+                                <div class="plato-descripcion oculto">
+                                    <div class="plato-detalle">
+                                        <div class="texto-detalle">
+                                            <div class="texto-info">
+                                                <p>Pollo sazonado en cadera de casa cocinada al cilindro. Se acompaña con papas nativas fritas a doble cocción, ensalada de legumbres y rodajas de chocho. <br>
+                                                <strong>Solo fines de semana y feriados.</strong></p>
+                                                <span class="precio-plato">S/ 27.00</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div> 
+                    </div>
+
+                    <!-- ========================= -->
+                    <!-- PLATOS AREQUIPEÑOS        -->
+                    <!-- ========================= -->
+                    <div class="seccion-platos">
+                        <h2 class="toggle-platos">🌋 Platos arequipeños</h2>
+                        <div class="contenedor-platos oculto">
+
+                            <div class="plato-item">
+                                <div class="plato-header">
+                                    <div class="plato-titulo">Rocoto con pastel de papa</div>
+                                    <div class="plato-controles">
+                                        <button class="boton-cantidad boton-reducir" data-plato="rocoto-con-pastel-de-papa">-</button>
+                                        <span class="cantidad-plato" data-plato="rocoto-con-pastel-de-papa">0</span>
+                                        <button class="boton-cantidad boton-aumentar" data-plato="rocoto-con-pastel-de-papa">+</button>
+                                        <button class="boton-eliminar" data-plato="rocoto-con-pastel-de-papa">Eliminar</button>
+                                        <span class="toggle-icon">▼</span>
+                                    </div>
+                                </div>
+                                <div class="plato-descripcion oculto">
+                                    <div class="plato-detalle">
+                                        <div class="texto-detalle">
+                                            <div class="texto-info">
+                                                <p>Tradicional rocoto relleno arequipeño acompañado con porción de pastel de papa.</p>
+                                                <span class="precio-plato">S/ 40.00</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="plato-item">
+                                <div class="plato-header">
+                                    <div class="plato-titulo">Triple de la casa</div>
+                                    <div class="plato-controles">
+                                        <button class="boton-cantidad boton-reducir" data-plato="triple-de-la-casa">-</button>
+                                        <span class="cantidad-plato" data-plato="triple-de-la-casa">0</span>
+                                        <button class="boton-cantidad boton-aumentar" data-plato="triple-de-la-casa">+</button>
+                                        <button class="boton-eliminar" data-plato="triple-de-la-casa">Eliminar</button>
+                                        <span class="toggle-icon">▼</span>
+                                    </div>
+                                </div>
+                                <div class="plato-descripcion oculto">
+                                    <div class="plato-detalle">
+                                        <div class="texto-detalle">
+                                            <div class="texto-info">
+                                                <p>Rocoto relleno, pastel de papa, porción de chicharrón de cerdo y ensalada criolla.</p>
+                                                <span class="precio-plato">S/ 45.00</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="plato-item">
+                                <div class="plato-header">
+                                    <div class="plato-titulo">Cuádruple de la casa</div>
+                                    <div class="plato-controles">
+                                        <button class="boton-cantidad boton-reducir" data-plato="cuadruple-de-la-casa">-</button>
+                                        <span class="cantidad-plato" data-plato="cuadruple-de-la-casa">0</span>
+                                        <button class="boton-cantidad boton-aumentar" data-plato="cuadruple-de-la-casa">+</button>
+                                        <button class="boton-eliminar" data-plato="cuadruple-de-la-casa">Eliminar</button>
+                                        <span class="toggle-icon">▼</span>
+                                    </div>
+                                </div>
+                                <div class="plato-descripcion oculto">
+                                    <div class="plato-detalle">
+                                        <div class="texto-detalle">
+                                            <div class="texto-info">
+                                                <p>Compuesto por rocoto relleno, pastel de papa, chicharrón de chancho y sarza de patitas.</p>
+                                                <span class="precio-plato">S/ 50.00</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div> 
+                    </div>
+
+                    <!-- ========================= -->
+                    <!-- PLATOS CRIOLLOS           -->
+                    <!-- ========================= -->
+                    <div class="seccion-platos">
+                        <h2 class="toggle-platos">🍲 Platos criollos</h2>
+                        <div class="contenedor-platos oculto">
+
+                            <div class="plato-item">
+                                <div class="plato-header">
+                                    <div class="plato-titulo">Chicharrón de cerdo</div>
+                                    <div class="plato-controles">
+                                        <button class="boton-cantidad boton-reducir" data-plato="chicharron-de-cerdo">-</button>
+                                        <span class="cantidad-plato" data-plato="chicharron-de-cerdo">0</span>
+                                        <button class="boton-cantidad boton-aumentar" data-plato="chicharron-de-cerdo">+</button>
+                                        <button class="boton-eliminar" data-plato="chicharron-de-cerdo">Eliminar</button>
+                                        <span class="toggle-icon">▼</span>
+                                    </div>
+                                </div>
+                                <div class="plato-descripcion oculto">
+                                    <div class="plato-detalle">
+                                        <div class="texto-detalle">
+                                            <div class="texto-info">
+                                                <p>Piezas de cerdo sazonados y elaboradas en fritura profunda. Acompañado con ensalada criolla y papas doradas.</p>
+                                                <span class="precio-plato">S/ 40.00</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="plato-item">
+                                <div class="plato-header">
+                                    <div class="plato-titulo">Chicharrón de costilla de cerdo</div>
+                                    <div class="plato-controles">
+                                        <button class="boton-cantidad boton-reducir" data-plato="chicharron-de-costilla-de-cerdo">-</button>
+                                        <span class="cantidad-plato" data-plato="chicharron-de-costilla-de-cerdo">0</span>
+                                        <button class="boton-cantidad boton-aumentar" data-plato="chicharron-de-costilla-de-cerdo">+</button>
+                                        <button class="boton-eliminar" data-plato="chicharron-de-costilla-de-cerdo">Eliminar</button>
+                                        <span class="toggle-icon">▼</span>
+                                    </div>
+                                </div>
+                                <div class="plato-descripcion oculto">
+                                    <div class="plato-detalle">
+                                        <div class="texto-detalle">
+                                            <div class="texto-info">
+                                                <p>Piezas de panceta de cerdo sazonadas con sal, especias y limón, elaboradas en fritura profunda.</p>
+                                                <span class="precio-plato">S/ 45.00</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="plato-item">
+                                <div class="plato-header">
+                                    <div class="plato-titulo">Chicharrón de pollo</div>
+                                    <div class="plato-controles">
+                                        <button class="boton-cantidad boton-reducir" data-plato="chicharron-de-pollo">-</button>
+                                        <span class="cantidad-plato" data-plato="chicharron-de-pollo">0</span>
+                                        <button class="boton-cantidad boton-aumentar" data-plato="chicharron-de-pollo">+</button>
+                                        <button class="boton-eliminar" data-plato="chicharron-de-pollo">Eliminar</button>
+                                        <span class="toggle-icon">▼</span>
+                                    </div>
+                                </div>
+                                <div class="plato-descripcion oculto">
+                                    <div class="plato-detalle">
+                                        <div class="texto-detalle">
+                                            <div class="texto-info">
+                                                <p>Trazos de pechuga de pollo sazonadas con el menjunjé de la casa, elaboradas en fritura profunda.</p>
+                                                <span class="precio-plato">S/ 32.00</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="plato-item">
+                                <div class="plato-header">
+                                    <div class="plato-titulo">Caldo blanco de lomos</div>
+                                    <div class="plato-controles">
+                                        <button class="boton-cantidad boton-reducir" data-plato="caldo-blanco-de-lomos">-</button>
+                                        <span class="cantidad-plato" data-plato="caldo-blanco-de-lomos">0</span>
+                                        <button class="boton-cantidad boton-aumentar" data-plato="caldo-blanco-de-lomos">+</button>
+                                        <button class="boton-eliminar" data-plato="caldo-blanco-de-lomos">Eliminar</button>
+                                        <span class="toggle-icon">▼</span>
+                                    </div>
+                                </div>
+                                <div class="plato-descripcion oculto">
+                                    <div class="plato-detalle">
+                                        <div class="texto-detalle">
+                                            <div class="texto-info">
+                                                <p>Caldo tradicional arequipeño. <br>
+                                                <strong>Solo fines de semana y feriados.</strong></p>
+                                                <span class="precio-plato">S/ 20.00</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="plato-item">
+                                <div class="plato-header">
+                                    <div class="plato-titulo">Costillar de cordero dorado</div>
+                                    <div class="plato-controles">
+                                        <button class="boton-cantidad boton-reducir" data-plato="costillar-de-cordero-dorado">-</button>
+                                        <span class="cantidad-plato" data-plato="costillar-de-cordero-dorado">0</span>
+                                        <button class="boton-cantidad boton-aumentar" data-plato="costillar-de-cordero-dorado">+</button>
+                                        <button class="boton-eliminar" data-plato="costillar-de-cordero-dorado">Eliminar</button>
+                                        <span class="toggle-icon">▼</span>
+                                    </div>
+                                </div>
+                                <div class="plato-descripcion oculto">
+                                    <div class="plato-detalle">
+                                        <div class="texto-detalle">
+                                            <div class="texto-info">
+                                                <p>Pieza de costilar de cordero dorado en fritura profunda, acompañado de arroz, papas doradas y ensalada criolla.</p>
+                                                <span class="precio-plato">S/ 38.00</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="plato-item">
+                                <div class="plato-header">
+                                    <div class="plato-titulo">Chupe de camarón</div>
+                                    <div class="plato-controles">
+                                        <button class="boton-cantidad boton-reducir" data-plato="chupe-de-camaron">-</button>
+                                        <span class="cantidad-plato" data-plato="chupe-de-camaron">0</span>
+                                        <button class="boton-cantidad boton-aumentar" data-plato="chupe-de-camaron">+</button>
+                                        <button class="boton-eliminar" data-plato="chupe-de-camaron">Eliminar</button>
+                                        <span class="toggle-icon">▼</span>
+                                    </div>
+                                </div>
+                                <div class="plato-descripcion oculto">
+                                    <div class="plato-detalle">
+                                        <div class="texto-detalle">
+                                            <div class="texto-info">
+                                                <p>Sopa a base de camarones en aderezo de ajíes.</p>
+                                                <span class="precio-plato">S/ 55.00</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="plato-item">
+                                <div class="plato-header">
+                                    <div class="plato-titulo">Cuy chactado</div>
+                                    <div class="plato-controles">
+                                        <button class="boton-cantidad boton-reducir" data-plato="cuy-chactado">-</button>
+                                        <span class="cantidad-plato" data-plato="cuy-chactado">0</span>
+                                        <button class="boton-cantidad boton-aumentar" data-plato="cuy-chactado">+</button>
+                                        <button class="boton-eliminar" data-plato="cuy-chactado">Eliminar</button>
+                                        <span class="toggle-icon">▼</span>
+                                    </div>
+                                </div>
+                                <div class="plato-descripcion oculto">
+                                    <div class="plato-detalle">
+                                        <div class="texto-detalle">
+                                            <div class="texto-info">
+                                                <p>Cuy frito en abundante aceite hasta alcanzar crocancia.</p>
+                                                <span class="precio-plato">S/ 55.00</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="plato-item">
+                                <div class="plato-header">
+                                    <div class="plato-titulo">Cuy de la casa</div>
+                                    <div class="plato-controles">
+                                        <button class="boton-cantidad boton-reducir" data-plato="cuy-de-la-casa">-</button>
+                                        <span class="cantidad-plato" data-plato="cuy-de-la-casa">0</span>
+                                        <button class="boton-cantidad boton-aumentar" data-plato="cuy-de-la-casa">+</button>
+                                        <button class="boton-eliminar" data-plato="cuy-de-la-casa">Eliminar</button>
+                                        <span class="toggle-icon">▼</span>
+                                    </div>
+                                </div>
+                                <div class="plato-descripcion oculto">
+                                    <div class="plato-detalle">
+                                        <div class="texto-detalle">
+                                            <div class="texto-info">
+                                                <p>Cuy de la casa chactado.</p>
+                                                <span class="precio-plato">S/ 60.00</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div> 
+                    </div>
+
+                    <!-- ========================= -->
+                    <!-- PARRILLAS AL CARBON       -->
+                    <!-- ========================= -->
+                    <div class="seccion-platos">
+                        <h2 class="toggle-platos">🔥 Parrillas a carbón</h2>
+                        <div class="contenedor-platos oculto">
+
+                            <div class="plato-item">
+                                <div class="plato-header">
+                                    <div class="plato-titulo">Parrilla de res</div>
+                                    <div class="plato-controles">
+                                        <button class="boton-cantidad boton-reducir" data-plato="parrilla-de-res">-</button>
+                                        <span class="cantidad-plato" data-plato="parrilla-de-res">0</span>
+                                        <button class="boton-cantidad boton-aumentar" data-plato="parrilla-de-res">+</button>
+                                        <button class="boton-eliminar" data-plato="parrilla-de-res">Eliminar</button>
+                                        <span class="toggle-icon">▼</span>
+                                    </div>
+                                </div>
+                                <div class="plato-descripcion oculto">
+                                    <div class="plato-detalle">
+                                        <div class="texto-detalle">
+                                            <div class="texto-info">
+                                                <p>Chuleta de res condimentada elaborada a la parrilla y bañada en chimichurri.</p>
+                                                <span class="precio-plato">S/ 38.00</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="plato-item">
+                                <div class="plato-header">
+                                    <div class="plato-titulo">Parrilla de cerdo</div>
+                                    <div class="plato-controles">
+                                        <button class="boton-cantidad boton-reducir" data-plato="parrilla-de-cerdo">-</button>
+                                        <span class="cantidad-plato" data-plato="parrilla-de-cerdo">0</span>
+                                        <button class="boton-cantidad boton-aumentar" data-plato="parrilla-de-cerdo">+</button>
+                                        <button class="boton-eliminar" data-plato="parrilla-de-cerdo">Eliminar</button>
+                                        <span class="toggle-icon">▼</span>
+                                    </div>
+                                </div>
+                                <div class="plato-descripcion oculto">
+                                    <div class="plato-detalle">
+                                        <div class="texto-detalle">
+                                            <div class="texto-info">
+                                                <p>Chuleta de cerdo condimentada, elaborada en parrilla y bañada en chimichurri.</p>
+                                                <span class="precio-plato">S/ 38.00</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="plato-item">
+                                <div class="plato-header">
+                                    <div class="plato-titulo">Parrilla de pollo</div>
+                                    <div class="plato-controles">
+                                        <button class="boton-cantidad boton-reducir" data-plato="parrilla-de-pollo">-</button>
+                                        <span class="cantidad-plato" data-plato="parrilla-de-pollo">0</span>
+                                        <button class="boton-cantidad boton-aumentar" data-plato="parrilla-de-pollo">+</button>
+                                        <button class="boton-eliminar" data-plato="parrilla-de-pollo">Eliminar</button>
+                                        <span class="toggle-icon">▼</span>
+                                    </div>
+                                </div>
+                                <div class="plato-descripcion oculto">
+                                    <div class="plato-detalle">
+                                        <div class="texto-detalle">
+                                            <div class="texto-info">
+                                                <p>Filete de pollo condimentada, elaborado en parrilla y bañada en chimichurri.</p>
+                                                <span class="precio-plato">S/ 35.00</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="plato-item">
+                                <div class="plato-header">
+                                    <div class="plato-titulo">Parrilla de pescado</div>
+                                    <div class="plato-controles">
+                                        <button class="boton-cantidad boton-reducir" data-plato="parrilla-de-pescado">-</button>
+                                        <span class="cantidad-plato" data-plato="parrilla-de-pescado">0</span>
+                                        <button class="boton-cantidad boton-aumentar" data-plato="parrilla-de-pescado">+</button>
+                                        <button class="boton-eliminar" data-plato="parrilla-de-pescado">Eliminar</button>
+                                        <span class="toggle-icon">▼</span>
+                                    </div>
+                                </div>
+                                <div class="plato-descripcion oculto">
+                                    <div class="plato-detalle">
+                                        <div class="texto-detalle">
+                                            <div class="texto-info">
+                                                <p>Trucha condimentada, elaborada en la parrilla, bañada en chimichurri.</p>
+                                                <span class="precio-plato">S/ 35.00</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div> 
+                    </div>
+
+                    <!-- ========================= -->
+                    <!-- PLATOS INFANTILES         -->
+                    <!-- ========================= -->
+                    <div class="seccion-platos">
+                        <h2 class="toggle-platos">🍟 Platos infantiles</h2>
+                        <div class="contenedor-platos oculto">
+
+                            <div class="plato-item">
+                                <div class="plato-header">
+                                    <div class="plato-titulo">Milanesa de pollo</div>
+                                    <div class="plato-controles">
+                                        <button class="boton-cantidad boton-reducir" data-plato="milanesa-de-pollo">-</button>
+                                        <span class="cantidad-plato" data-plato="milanesa-de-pollo">0</span>
+                                        <button class="boton-cantidad boton-aumentar" data-plato="milanesa-de-pollo">+</button>
+                                        <button class="boton-eliminar" data-plato="milanesa-de-pollo">Eliminar</button>
+                                        <span class="toggle-icon">▼</span>
+                                    </div>
+                                </div>
+                                <div class="plato-descripcion oculto">
+                                    <div class="plato-detalle">
+                                        <div class="texto-detalle">
+                                            <div class="texto-info">
+                                                <p>Filete de pechuga de pollo empanizada en harina de pan, huevo y paneo. Se acompaña con papas fritas, porción de arroz y ensalada de legumbres.</p>
+                                                <span class="precio-plato">S/ 33.00</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div> 
+                    </div>
+
+                    <!-- ===================================== -->
+                    <!-- PESCADOS Y MARISCOS - SABORES MARINOS -->
+                    <!-- ===================================== -->
+                    <div class="seccion-platos">
+                        <h2 class="toggle-platos">🦐 Sabores marinos</h2>
+                        <div class="contenedor-platos oculto">
+
+                            <div class="plato-item">
+                                <div class="plato-header">
+                                    <div class="plato-titulo">Ceviche de trucha</div>
+                                    <div class="plato-controles">
+                                        <button class="boton-cantidad boton-reducir" data-plato="ceviche-de-trucha">-</button>
+                                        <span class="cantidad-plato" data-plato="ceviche-de-trucha">0</span>
+                                        <button class="boton-cantidad boton-aumentar" data-plato="ceviche-de-trucha">+</button>
+                                        <button class="boton-eliminar" data-plato="ceviche-de-trucha">Eliminar</button>
+                                        <span class="toggle-icon">▼</span>
+                                    </div>
+                                </div>
+                                <div class="plato-descripcion oculto">
+                                    <div class="plato-detalle">
+                                        <div class="texto-detalle">
+                                            <div class="texto-info">
+                                                <p>Trazos de trucha marinados en culantro, ají limo, limón y ají amarillo.</p>
+                                                <span class="precio-plato">S/ 36.00</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="plato-item">
+                                <div class="plato-header">
+                                    <div class="plato-titulo">Ceviche de mariscos</div>
+                                    <div class="plato-controles">
+                                        <button class="boton-cantidad boton-reducir" data-plato="ceviche-de-mariscos">-</button>
+                                        <span class="cantidad-plato" data-plato="ceviche-de-mariscos">0</span>
+                                        <button class="boton-cantidad boton-aumentar" data-plato="ceviche-de-mariscos">+</button>
+                                        <button class="boton-eliminar" data-plato="ceviche-de-mariscos">Eliminar</button>
+                                        <span class="toggle-icon">▼</span>
+                                    </div>
+                                </div>
+                                <div class="plato-descripcion oculto">
+                                    <div class="plato-detalle">
+                                        <div class="texto-detalle">
+                                            <div class="texto-info">
+                                                <p>Mezcla de mariscos marinados en cilantro, ají limo, limón y salsa de rocoto.</p>
+                                                <span class="precio-plato">S/ 38.00</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="plato-item">
+                                <div class="plato-header">
+                                    <div class="plato-titulo">Trio marino</div>
+                                    <div class="plato-controles">
+                                        <button class="boton-cantidad boton-reducir" data-plato="trio-marino">-</button>
+                                        <span class="cantidad-plato" data-plato="trio-marino">0</span>
+                                        <button class="boton-cantidad boton-aumentar" data-plato="trio-marino">+</button>
+                                        <button class="boton-eliminar" data-plato="trio-marino">Eliminar</button>
+                                        <span class="toggle-icon">▼</span>
+                                    </div>
+                                </div>
+                                <div class="plato-descripcion oculto">
+                                    <div class="plato-detalle">
+                                        <div class="texto-detalle">
+                                            <div class="texto-info">
+                                                <p>Compuesto por arroz de mariscos, ceviche de trucha, chicharrón de trucha.</p>
+                                                <span class="precio-plato">S/ 45.00</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="plato-item">
+                                <div class="plato-header">
+                                    <div class="plato-titulo">Arroz de mariscos</div>
+                                    <div class="plato-controles">
+                                        <button class="boton-cantidad boton-reducir" data-plato="arroz-de-mariscos">-</button>
+                                        <span class="cantidad-plato" data-plato="arroz-de-mariscos">0</span>
+                                        <button class="boton-cantidad boton-aumentar" data-plato="arroz-de-mariscos">+</button>
+                                        <button class="boton-eliminar" data-plato="arroz-de-mariscos">Eliminar</button>
+                                        <span class="toggle-icon">▼</span>
+                                    </div>
+                                </div>
+                                <div class="plato-descripcion oculto">
+                                    <div class="plato-detalle">
+                                        <div class="texto-detalle">
+                                            <div class="texto-info">
+                                                <p>Mezcla de mariscos salteados en un aderezo de ajíes y salsa de mariscos con arroz, alverjas, granos de choclo, cilantro y leche.</p>
+                                                <span class="precio-plato">S/ 38.00</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="plato-item">
+                                <div class="plato-header">
+                                    <div class="plato-titulo">Chaufa de mariscos</div>
+                                    <div class="plato-controles">
+                                        <button class="boton-cantidad boton-reducir" data-plato="chaufa-de-mariscos">-</button>
+                                        <span class="cantidad-plato" data-plato="chaufa-de-mariscos">0</span>
+                                        <button class="boton-cantidad boton-aumentar" data-plato="chaufa-de-mariscos">+</button>
+                                        <button class="boton-eliminar" data-plato="chaufa-de-mariscos">Eliminar</button>
+                                        <span class="toggle-icon">▼</span>
+                                    </div>
+                                </div>
+                                <div class="plato-descripcion oculto">
+                                    <div class="plato-detalle">
+                                        <div class="texto-detalle">
+                                            <div class="texto-info">
+                                                <p>Mezcla de mariscos sazonados en soja clara y oscura, salteadas con arroz, pimentón, cebolla verde y aceite de ajonjolí.</p>
+                                                <span class="precio-plato">S/ 36.00</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="plato-item">
+                                <div class="plato-header">
+                                    <div class="plato-titulo">Fusión marina</div>
+                                    <div class="plato-controles">
+                                        <button class="boton-cantidad boton-reducir" data-plato="fusion-marina">-</button>
+                                        <span class="cantidad-plato" data-plato="fusion-marina">0</span>
+                                        <button class="boton-cantidad boton-aumentar" data-plato="fusion-marina">+</button>
+                                        <button class="boton-eliminar" data-plato="fusion-marina">Eliminar</button>
+                                        <span class="toggle-icon">▼</span>
+                                    </div>
+                                </div>
+                                <div class="plato-descripcion oculto">
+                                    <div class="plato-detalle">
+                                        <div class="texto-detalle">
+                                            <div class="texto-info">
+                                                <p>Compuesto por arroz de mariscos, ceviche de trucha, chicharrón de trucha, tequeños de mariscos y causa de pulpo al olivo.</p>
+                                                <span class="precio-plato">S/ 56.00</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="plato-item">
+                                <div class="plato-header">
+                                    <div class="plato-titulo">Sudado de pescado</div>
+                                    <div class="plato-controles">
+                                        <button class="boton-cantidad boton-reducir" data-plato="sudado-de-pescado">-</button>
+                                        <span class="cantidad-plato" data-plato="sudado-de-pescado">0</span>
+                                        <button class="boton-cantidad boton-aumentar" data-plato="sudado-de-pescado">+</button>
+                                        <button class="boton-eliminar" data-plato="sudado-de-pescado">Eliminar</button>
+                                        <span class="toggle-icon">▼</span>
+                                    </div>
+                                </div>
+                                <div class="plato-descripcion oculto">
+                                    <div class="plato-detalle">
+                                        <div class="texto-detalle">
+                                            <div class="texto-info">
+                                                <p>Sopa de pescado, cerveza negra, en aderezo de ajíes, tomate y cebolla.</p>
+                                                <span class="precio-plato">S/ 34.00</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="plato-item">
+                                <div class="plato-header">
+                                    <div class="plato-titulo">Parihuela de trucha y mariscos</div>
+                                    <div class="plato-controles">
+                                        <button class="boton-cantidad boton-reducir" data-plato="parihuela-de-trucha-y-mariscos">-</button>
+                                        <span class="cantidad-plato" data-plato="parihuela-de-trucha-y-mariscos">0</span>
+                                        <button class="boton-cantidad boton-aumentar" data-plato="parihuela-de-trucha-y-mariscos">+</button>
+                                        <button class="boton-eliminar" data-plato="parihuela-de-trucha-y-mariscos">Eliminar</button>
+                                        <span class="toggle-icon">▼</span>
+                                    </div>
+                                </div>
+                                <div class="plato-descripcion oculto">
+                                    <div class="plato-detalle">
+                                        <div class="texto-detalle">
+                                            <div class="texto-info">
+                                                <p>Sopa de pescado y mezcla de mariscos en aderezo de ajíes, tomate y cebolla.</p>
+                                                <span class="precio-plato">S/ 37.00</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div> 
+                    </div>
+
+                    <!-- ======================================= -->
+                    <!-- PESCADOS Y MARISCOS - CROCANTES MARINOS -->
+                    <!-- ======================================= -->
+                    <div class="seccion-platos">
+                        <h2 class="toggle-platos">🦀 Crocantes marinos</h2>
+                        <div class="contenedor-platos oculto">
+
+                            <div class="plato-item">
+                                <div class="plato-header">
+                                    <div class="plato-titulo">Trucha frita</div>
+                                    <div class="plato-controles">
+                                        <button class="boton-cantidad boton-reducir" data-plato="trucha-frita">-</button>
+                                        <span class="cantidad-plato" data-plato="trucha-frita">0</span>
+                                        <button class="boton-cantidad boton-aumentar" data-plato="trucha-frita">+</button>
+                                        <button class="boton-eliminar" data-plato="trucha-frita">Eliminar</button>
+                                        <span class="toggle-icon">▼</span>
+                                    </div>
+                                </div>
+                                <div class="plato-descripcion oculto">
+                                    <div class="plato-detalle">
+                                        <div class="texto-detalle">
+                                            <div class="texto-info">
+                                                <p>Trucha condimentada y dorada en abundante aceite. Acompañada de porción de arroz, papas fritas, ensalada de legumbres.</p>
+                                                <span class="precio-plato">S/ 35.00</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="plato-item">
+                                <div class="plato-header">
+                                    <div class="plato-titulo">Chicharrón de trucha</div>
+                                    <div class="plato-controles">
+                                        <button class="boton-cantidad boton-reducir" data-plato="chicharron-de-trucha">-</button>
+                                        <span class="cantidad-plato" data-plato="chicharron-de-trucha">0</span>
+                                        <button class="boton-cantidad boton-aumentar" data-plato="chicharron-de-trucha">+</button>
+                                        <button class="boton-eliminar" data-plato="chicharron-de-trucha">Eliminar</button>
+                                        <span class="toggle-icon">▼</span>
+                                    </div>
+                                </div>
+                                <div class="plato-descripcion oculto">
+                                    <div class="plato-detalle">
+                                        <div class="texto-detalle">
+                                            <div class="texto-info">
+                                                <p>Trazos de trucha sazonadas en un menjunje de la casa, empanizados, doradas a fritura profunda.</p>
+                                                <span class="precio-plato">S/ 35.00</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="plato-item">
+                                <div class="plato-header">
+                                    <div class="plato-titulo">Chicharrón de pulpo</div>
+                                    <div class="plato-controles">
+                                        <button class="boton-cantidad boton-reducir" data-plato="chicharron-de-pulpo">-</button>
+                                        <span class="cantidad-plato" data-plato="chicharron-de-pulpo">0</span>
+                                        <button class="boton-cantidad boton-aumentar" data-plato="chicharron-de-pulpo">+</button>
+                                        <button class="boton-eliminar" data-plato="chicharron-de-pulpo">Eliminar</button>
+                                        <span class="toggle-icon">▼</span>
+                                    </div>
+                                </div>
+                                <div class="plato-descripcion oculto">
+                                    <div class="plato-detalle">
+                                        <div class="texto-detalle">
+                                            <div class="texto-info">
+                                                <p>Lonchas de pulpo sazonadas en un menjunje de la casa, empanizadas, elaboradas a fritura profunda.</p>
+                                                <span class="precio-plato">S/ 38.00</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="plato-item">
+                                <div class="plato-header">
+                                    <div class="plato-titulo">Chicharrón de calamar</div>
+                                    <div class="plato-controles">
+                                        <button class="boton-cantidad boton-reducir" data-plato="chicharron-de-calamar">-</button>
+                                        <span class="cantidad-plato" data-plato="chicharron-de-calamar">0</span>
+                                        <button class="boton-cantidad boton-aumentar" data-plato="chicharron-de-calamar">+</button>
+                                        <button class="boton-eliminar" data-plato="chicharron-de-calamar">Eliminar</button>
+                                        <span class="toggle-icon">▼</span>
+                                    </div>
+                                </div>
+                                <div class="plato-descripcion oculto">
+                                    <div class="plato-detalle">
+                                        <div class="texto-detalle">
+                                            <div class="texto-info">
+                                                <p>Aros de calamar sazonadas en un menjunje de la casa, empanizados, elaboradas a fritura profunda.</p>
+                                                <span class="precio-plato">S/ 38.00</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="plato-item">
+                                <div class="plato-header">
+                                    <div class="plato-titulo">Chicharrón de camarón</div>
+                                    <div class="plato-controles">
+                                        <button class="boton-cantidad boton-reducir" data-plato="chicharron-de-camaron">-</button>
+                                        <span class="cantidad-plato" data-plato="chicharron-de-camaron">0</span>
+                                        <button class="boton-cantidad boton-aumentar" data-plato="chicharron-de-camaron">+</button>
+                                        <button class="boton-eliminar" data-plato="chicharron-de-camaron">Eliminar</button>
+                                        <span class="toggle-icon">▼</span>
+                                    </div>
+                                </div>
+                                <div class="plato-descripcion oculto">
+                                    <div class="plato-detalle">
+                                        <div class="texto-detalle">
+                                            <div class="texto-info">
+                                                <p>Camarones sazonados en un menjunje de la casa, empanizados, elaboradas a fritura profunda.</p>
+                                                <span class="precio-plato">S/ 50.00</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div> 
+                    </div>
+
+                    <!-- ======================================== -->
+                    <!-- PESCADOS Y MARISCOS - PESCADOS EN SALSAS -->
+                    <!-- ======================================== -->
+                    <div class="seccion-platos">
+                        <h2 class="toggle-platos">🌊 Pescados en salsas</h2>
+                        <div class="contenedor-platos oculto">
+
+                            <div class="plato-item">
+                                <div class="plato-header">
+                                    <div class="plato-titulo">Trucha en salsa de ajos</div>
+                                    <div class="plato-controles">
+                                        <button class="boton-cantidad boton-reducir" data-plato="trucha-en-salsa-de-ajos">-</button>
+                                        <span class="cantidad-plato" data-plato="trucha-en-salsa-de-ajos">0</span>
+                                        <button class="boton-cantidad boton-aumentar" data-plato="trucha-en-salsa-de-ajos">+</button>
+                                        <button class="boton-eliminar" data-plato="trucha-en-salsa-de-ajos">Eliminar</button>
+                                        <span class="toggle-icon">▼</span>
+                                    </div>
+                                </div>
+                                <div class="plato-descripcion oculto">
+                                    <div class="plato-detalle">
+                                        <div class="texto-detalle">
+                                            <div class="texto-info">
+                                                <p>Trucha frita con una salsa blanca sazonada con ajos salteados. Se acompaña con papas fritas, porción de arroz y ensalada de legumbres.</p>
+                                                <span class="precio-plato">S/ 38.00</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="plato-item">
+                                <div class="plato-header">
+                                    <div class="plato-titulo">Trucha en salsa de champiñones</div>
+                                    <div class="plato-controles">
+                                        <button class="boton-cantidad boton-reducir" data-plato="trucha-en-salsa-de-champinones">-</button>
+                                        <span class="cantidad-plato" data-plato="trucha-en-salsa-de-champinones">0</span>
+                                        <button class="boton-cantidad boton-aumentar" data-plato="trucha-en-salsa-de-champinones">+</button>
+                                        <button class="boton-eliminar" data-plato="trucha-en-salsa-de-champinones">Eliminar</button>
+                                        <span class="toggle-icon">▼</span>
+                                    </div>
+                                </div>
+                                <div class="plato-descripcion oculto">
+                                    <div class="plato-detalle">
+                                        <div class="texto-detalle">
+                                            <div class="texto-info">
+                                                <p>Trucha frita con una salsa blanca sazonada con champiñones salteados. Acompañada con papas fritas, porción de arroz y ensalada de legumbres.</p>
+                                                <span class="precio-plato">S/ 38.00</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="plato-item">
+                                <div class="plato-header">
+                                    <div class="plato-titulo">Trucha en salsa de mariscos</div>
+                                    <div class="plato-controles">
+                                        <button class="boton-cantidad boton-reducir" data-plato="trucha-en-salsa-de-mariscos">-</button>
+                                        <span class="cantidad-plato" data-plato="trucha-en-salsa-de-mariscos">0</span>
+                                        <button class="boton-cantidad boton-aumentar" data-plato="trucha-en-salsa-de-mariscos">+</button>
+                                        <button class="boton-eliminar" data-plato="trucha-en-salsa-de-mariscos">Eliminar</button>
+                                        <span class="toggle-icon">▼</span>
+                                    </div>
+                                </div>
+                                <div class="plato-descripcion oculto">
+                                    <div class="plato-detalle">
+                                        <div class="texto-detalle">
+                                            <div class="texto-info">
+                                                <p>Trucha frita con una salsa blanca sazonada con mariscos en un aderezo de ajíes acompañada de papas hervidas sumergidas en la salsa y porción de arroz.</p>
+                                                <span class="precio-plato">S/ 40.00</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div> 
+                    </div>
+                </div>
+            </div>
+
+            <div class="lista-platos"></div>
+
+            <!-- ========================= -->
+            <!-- CAMPO COMENTARIOS        -->
+            <!-- ========================= -->
+            <div class="grupo-formulario">
+                <label for="comentarios" class="etiqueta">Comentarios adicionales (opcional):</label>
+                <textarea id="comentarios" class="entrada" rows="4"></textarea>
+            </div>
+            
+            <!-- ========================= -->
+            <!-- BOTONES NAVEGACIÓN      -->
+            <!-- ========================= -->
+            <div class="contenedor-botones">
+                <button class="boton boton-anterior" id="anterior-4">Anterior</button>
+                <button class="boton boton-siguiente" id="siguiente-4">Siguiente</button>
+            </div>
+        </div>
+        
+        <!-- ========================= -->
+        <!-- PASO 5: CONFIRMACIÓN     -->
+        <!-- ========================= -->
+        <div class="paso" id="paso-5">
+            <h2>Confirma tu reserva</h2>
+            
+            <!-- ========================= -->
+            <!-- RESUMEN DE RESERVA       -->
+            <!-- ========================= -->
+            <div class="resumen-reserva" id="resumen-reserva">
+                <div class="resumen-item">
+                    <span class="resumen-titulo">Personas:</span> <span id="resumen-personas"></span>
+                </div>
+                <div class="resumen-item">
+                    <span class="resumen-titulo">Fecha:</span> <span id="resumen-fecha"></span>
+                </div>
+                <div class="resumen-item">
+                    <span class="resumen-titulo">Hora:</span> <span id="resumen-hora"></span>
+                </div>
+                <div class="resumen-item">
+                    <span class="resumen-titulo">Nombre:</span> <span id="resumen-nombre"></span>
+                </div>
+                <div class="resumen-item">
+                    <span class="resumen-titulo">Teléfono:</span> <span id="resumen-telefono"></span>
+                </div>
+                <div class="resumen-item">
+                    <span class="resumen-titulo">Email:</span> <span id="resumen-email"></span>
+                </div>
+                <div class="resumen-item">
+                    <span class="resumen-titulo">Opción de menú:</span> <span id="resumen-opcion-menu"></span>
+                </div>
+                
+                <!-- ========================= -->
+                <!-- RESUMEN PLATOS          -->
+                <!-- ========================= -->
+                <div id="resumen-platos-container" class="resumen-platos" style="display: none;">
+                    <div class="resumen-titulo">Platos seleccionados:</div>
+                    <div id="resumen-platos-lista"></div>
+                </div>
+
+                <div class="resumen-platos"></div>
+                
+                <!-- ========================= -->
+                <!-- RESUMEN COMENTARIOS     -->
+                <!-- ========================= -->
+                <div class="resumen-item" id="resumen-comentarios-container" style="display: none;">
+                    <span class="resumen-titulo">Comentarios:</span> <span id="resumen-comentarios"></span>
+                </div>
+            </div>
+            
+            <!-- ========================= -->
+            <!-- BOTONES FINALES          -->
+            <!-- ========================= -->
+            <div class="contenedor-botones">
+                <button class="boton boton-anterior" id="anterior-5">Anterior</button>
+                <button class="boton" id="enviar-reserva">Enviar Reserva</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="../assets/js/restaurant-reservacion.js"></script>
+    <script src="../assets/js/restaurant-seccion-platos.js"></script>
+    <script src="../assets/js/restaurant-despliegue.js"></script>
+    <script src="../assets/js/restaurant-politica-datos.js"></script>
+</body>
+</html>

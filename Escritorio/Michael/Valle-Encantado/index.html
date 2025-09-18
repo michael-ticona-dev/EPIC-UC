@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Valle Encantado</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="./assets/css/index-principal.css">
+    <link rel="stylesheet" href="./assets/css/index-principal-carta.css">
+</head>
+<body>
+    <header>
+        <div class="contenedor">
+            <a href="#inicio" style="width: 150px; height: 60px; overflow: hidden; display: flex; align-items: center; justify-content: center; cursor: pointer;">
+                <img src="assets/images/logos/logo-valle-encantado.png" 
+                    alt="Logo Valle Encantado" 
+                    style="width: 140%; height: auto; object-fit: contain;">
+            </a>
+
+            <nav class="navegacion-principal">
+                <ul>
+                    <li><a href="#inicio" class="activo">Inicio</a></li>
+                    <li><a href="#restaurante">Restaurante</a></li>
+                    <li><a href="#hotel">Hotel</a></li>
+                    <li><a href="#campestre">Zona Campestre</a></li>
+                    <li><a href="#galeria">Galería</a></li>
+                    <li><a href="#contacto">Contacto</a></li>
+                    <li><a href="#mapa">Mapa</a></li>
+                </ul>
+                <div class="menu-movil">
+                    <i class="fas fa-bars"></i>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <section class="hero" id="inicio" 
+         style="background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)),
+                 url('./assets/images/otros/panel.jpg') no-repeat center center/cover;">
+        <div class="contenido-hero">
+            <h2>Descubre tu escape perfecto</h2>
+            <p>Gastronomía exquisita, alojamiento confortable y naturaleza en armonía</p>
+            <a href="#contacto" class="boton">Reservar ahora</a>
+        </div>
+    </section>
+
+
+    <section class="caracteristicas">
+        <div class="contenedor">
+            <div class="caja-caracteristica">
+                <i class="fas fa-utensils"></i>
+                <h3>Restaurante</h3>
+                <p>Cocina tradicional con ingredientes frescos de nuestra huerta</p>
+            </div>
+            <div class="caja-caracteristica">
+                <i class="fas fa-bed"></i>
+                <h3>Hotel</h3>
+                <p>Habitaciones cómodas con vistas al paisaje campestre</p>
+            </div>
+            <div class="caja-caracteristica">
+                <i class="fas fa-tree"></i>
+                <h3>Naturaleza</h3>
+                <p>Piscina, animales y espacios recreativos en plena naturaleza</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="sobre-nosotros" id="restaurante">
+        <div class="contenedor">
+            <div class="texto-sobre">
+                <h2>Nuestro Restaurante</h2>
+                <p>Disfruta de una experiencia gastronómica única con platos preparados con ingredientes frescos y productos locales.</p>
+                <ul>
+                    <li><i class="fas fa-check"></i> Desayunos campestres</li>
+                    <li><i class="fas fa-check"></i> Almuerzos tradicionales</li>
+                    <li><i class="fas fa-check"></i> Menú infantil disponible</li>
+                </ul>
+                <!-- Botón para abrir la carta -->
+                <a href="javascript:void(0);" id="btn-abrir-carta" class="boton">Ver menú completo</a>
+            </div>
+            <div class="imagen-sobre">
+                <img src="./assets/images/restaurant/plato-restaurant.jpg" alt="Restaurante" class="img-rest">
+            </div>
+        </div>
+    </section>
+
+    <!-- Modal -->
+    <div id="modal-carta" class="modal hidden">
+        <div class="modal-content">
+            <span id="btn-cerrar-carta" class="cerrar">&times;</span>
+            <iframe src="" frameborder="0"></iframe>
+        </div>
+    </div>
+
+<section class="hotel" id="hotel">
+    <div class="contenedor">
+        <h2>Nuestras Habitaciones</h2>
+        <p class="subtitulo">Confort y tranquilidad en medio de la naturaleza</p>
+        
+        <div class="habitaciones">
+            
+            <!-- Habitación Matrimonial Simple -->
+            <div class="habitacion">
+                <img src="assets/images/hotel/habitacion2.jpg" alt="Habitación Matrimonial Simple">
+                <div class="info-habitacion">
+                    <h3>Habitación Matrimonial Simple</h3>
+                    <p>Habitación acogedora con cama matrimonial, ideal para una estancia cómoda en pareja.</p>
+                    <div class="caracteristicas-habitacion">
+                        <div>
+                            <span><i class="fas fa-user-friends"></i> 2 personas</span>
+                        </div>
+                        <div>
+                            <span><i class="fas fa-bed"></i> 1 cama matrimonial</span>
+                            <span><i class="fas fa-wifi"></i> Wi-Fi</span>
+                            <span><i class="fas fa-bath"></i> Baño privado</span>
+                        </div>
+                    </div>
+                    <a href="#contacto" class="boton">Reservar</a>
+                </div>
+            </div>
+
+            <!-- Habitación Doble -->
+            <div class="habitacion">
+                <img src="assets/images/hotel/habitacion-doble.jpg" alt="Habitación Doble">
+                <div class="info-habitacion">
+                    <h3>Habitación Doble</h3>
+                    <p>Amplia habitación con dos camas, perfecta para amigos o familiares que buscan comodidad.</p>
+                    <div class="caracteristicas-habitacion">
+                        <div>
+                            <span><i class="fas fa-user-friends"></i> 2 personas</span>
+                        </div>
+                        <div>
+                            <span><i class="fas fa-bed"></i> 2 camas</span>
+                            <span><i class="fas fa-wifi"></i> Wi-Fi</span>
+                            <span><i class="fas fa-tv"></i> TV pantalla plana</span>
+                            <span><i class="fas fa-bath"></i> Baño privado</span>
+                        </div>
+                    </div>
+                    <a href="#contacto" class="boton">Reservar</a>
+                </div>
+            </div>
+
+            <!-- Habitación con Jacuzzi -->
+            <div class="habitacion">
+                <img src="assets/images/hotel/habitacion-simple.jpg" alt="Habitación con Jacuzzi">
+                <div class="info-habitacion">
+                    <h3>Habitación con Jacuzzi</h3>
+                    <p>Exclusiva habitación equipada con jacuzzi privado, ideal para una experiencia única de relax.</p>
+                    <div class="caracteristicas-habitacion">
+                        <div>
+                            <span><i class="fas fa-user-friends"></i> 1 persona</span>
+                        </div>
+                        <div>
+                            <span><i class="fas fa-bed"></i> 1 cama king</span>
+                            <span><i class="fas fa-wifi"></i> Wi-Fi</span>
+                            <span><i class="fas fa-tv"></i> TV</span>
+                            <span><i class="fas fa-bath"></i> Baño privado con jacuzzi</span>
+                        </div>
+                    </div>
+                    <a href="#contacto" class="boton">Reservar</a>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+
+    <section class="zona-campestre" id="campestre">
+        <div class="contenedor">
+            <h2>Zona Campestre</h2>
+            <p class="subtitulo">Disfruta de la naturaleza en todo su esplendor</p>
+            
+            <div class="comodidades">
+                <div class="comodidad">
+                    <img src="./assets/images/otros/piscina.jpg" alt="Piscina Natural" class="icono-comodidad-img"><br>
+                    <h3>Piscina Natural</h3>
+                    <p>Nuestra piscina con filtro natural es el lugar perfecto para refrescarse en los días calurosos.</p>
+                </div>
+
+                <div class="comodidad">
+                    <img src="./assets/images/otros/senderos-naturales.jpg" alt="Senderos Naturales" class="icono-comodidad-img"><br>
+                    <h3>Senderos Naturales</h3>
+                    <p>Explora nuestros senderos rodeados de vegetación nativa y disfruta del aire puro.</p>
+                </div>
+
+                <div class="comodidad">
+                    <img src="./assets/images/otros/zona-recreativa.jpg" alt="Zona Recreativa" class="icono-comodidad-img"><br>
+                    <h3>Zona Recreativa</h3>
+                    <p>Área con juegos tradicionales, cancha de fútbol, circuito de cuatrimotos, tirolesa, mesas de billar y ping pong.</p>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <section class="galeria" id="galeria">
+        <div class="contenedor">
+            <h2 class="titulo-seccion">Galería Visual</h2>
+            <p class="subtitulo-seccion">Un recorrido por nuestra esencia</p>
+            
+            <div class="cuadricula-galeria">
+                <!-- Item 1 - Cancha -->
+                <div class="tarjeta-galeria">
+                    <img src="./assets/images/otros/img1.jpg" 
+                        alt="Cancha de fútbol de césped" 
+                        class="imagen-galeria">
+                    <div class="superposicion">
+                        <div class="contenido-superposicion">
+                            <h3>Cancha de Fútbol</h3>
+                            <p>Campo de césped ideal para partidos y torneos</p>
+                            <i class="fas fa-search-plus icono-zoom"></i>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Item 2 - Billar -->
+                <div class="tarjeta-galeria">
+                    <img src="./assets/images/otros/img2.jpg" 
+                        alt="Área de billar y ping pong" 
+                        class="imagen-galeria">
+                    <div class="superposicion">
+                        <div class="contenido-superposicion">
+                            <h3>Área Recreativa</h3>
+                            <p>Billar y ping pong para divertirte con amigos</p>
+                            <i class="fas fa-search-plus icono-zoom"></i>
+                        </div>
+                    </div>
+                </div>
+
+                
+                <!-- Item 3 - Juegos para niños -->
+                <div class="tarjeta-galeria">
+                    <img src="./assets/images/otros/img3.jpg" 
+                        alt="Área de juegos para niños" 
+                        class="imagen-galeria">
+                    <div class="superposicion">
+                        <div class="contenido-superposicion">
+                            <h3>Juegos Infantiles</h3>
+                            <p>Diversión segura para los más pequeños</p>
+                            <i class="fas fa-search-plus icono-zoom"></i>
+                        </div>
+                    </div>
+                </div>
+
+                
+                <!-- Item 4 - Cuatrimotos -->
+                <div class="tarjeta-galeria">
+                    <img src="./assets/images/otros/img4.jpg" 
+                        alt="Recorridos en cuatrimoto" 
+                        class="imagen-galeria">
+                    <div class="superposicion">
+                        <div class="contenido-superposicion">
+                            <h3>Cuatrimotos</h3>
+                            <p>Vive la aventura con recorridos todo terreno</p>
+                            <i class="fas fa-search-plus icono-zoom"></i>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Item 5 - Hotel -->
+                <div class="tarjeta-galeria">
+                    <img src="./assets/images/otros/img5.jpg" 
+                        alt="Hotel Valle Encantado" 
+                        class="imagen-galeria">
+                    <div class="superposicion">
+                        <div class="contenido-superposicion">
+                            <h3>Hotel</h3>
+                            <p>Comodidad y descanso en medio de la naturaleza</p>
+                            <i class="fas fa-search-plus icono-zoom"></i>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Item 6 - Restaurante con vista -->
+                <div class="tarjeta-galeria">
+                    <img src="./assets/images/otros/img6.jpg" 
+                        alt="Restaurante con vista panorámica" 
+                        class="imagen-galeria">
+                    <div class="superposicion">
+                        <div class="contenido-superposicion">
+                            <h3>Restaurante con Vista</h3>
+                            <p>Disfruta de la mejor gastronomía con paisajes únicos</p>
+                            <i class="fas fa-search-plus icono-zoom"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Modal Lightbox -->
+        <div class="modal-lightbox">
+            <span class="cerrar-modal">&times;</span>
+            <img class="contenido-lightbox" id="imagen-lightbox">
+            <div class="pie-lightbox"></div>
+            <a class="anterior-btn">&#10094;</a>
+            <a class="siguiente-btn">&#10095;</a>
+        </div>
+    </section>
+
+    <section class="contacto" id="contacto">
+        <div class="contenedor">
+            <div class="contenido-contacto">
+                <div class="info-contacto">
+                    <h2>Contacto</h2>
+                    <p>Estamos aquí para ayudarte. Contáctanos para reservas o consultas.</p><br>
+                    
+                    <div class="item-info">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <p>El Valle Encantado, Fundo rústico s/n, a un costado del peaje, Uchumayo 04400–04401, Arequipa, Perú</p>
+                    </div>
+                    
+                    <div class="item-info">
+                        <i class="fas fa-phone"></i>
+                        <p>+51 980 661 191</p>
+                    </div>
+                    
+                    <div class="item-info">
+                        <i class="fas fa-envelope"></i>
+                        <p>elvalleencantado123@gmail.com</p>
+                    </div>
+                    
+                    <div class="redes-sociales">
+                        <a href="https://www.facebook.com/elvalleencantado123/" target="_blank"><i class="fab fa-facebook-f"></i></a>
+                        <a href="https://www.instagram.com/elvalle_aqp/?hl=es" target="_blank"><i class="fab fa-instagram"></i></a>
+                    </div>
+                </div>
+                
+                <div class="botones-reserva">
+                    <div class="boton-reserva-card">
+                        <h3>Reserva en nuestro Hotel</h3>
+                        <p>Disfruta de una estancia cómoda en nuestras habitaciones con todas las comodidades</p>
+                        <button class="boton-accion hotel">Reservar Hotel</button>
+                    </div>
+                    
+                    <div class="boton-reserva-card">
+                        <h3>Reserva en el Restaurante</h3>
+                        <p>Vive una experiencia gastronómica única con nuestros platos exclusivos</p>
+                        <button class="boton-accion restaurante">Reservar Restaurante</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="mapa" id="mapa">
+        <iframe 
+        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3826.227053394813!2d-71.6677355!3d-16.4198328!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x91423311bd4c2ccd%3A0x4453ea7b332589f0!2sEl%20Valle%20Encantado!5e0!3m2!1ses-419!2spe!4v1690846722918!5m2!1ses-419!2spe" 
+        width="100%" 
+        height="450" 
+        style="border:0;" 
+        allowfullscreen="" 
+        loading="lazy" 
+        referrerpolicy="no-referrer-when-downgrade">
+        </iframe>
+    </section>
+
+    <footer>
+        <div class="derechos">
+            <p>&copy; 2025 Valle Encantado. Todos los derechos reservados.</p>
+        </div>
+    </footer>
+
+    <script src="./assets/js/index-principal.js"></script>
+    <script src="./assets/js/index-principal-carta.js"></script>
+</body>
+</html>
+

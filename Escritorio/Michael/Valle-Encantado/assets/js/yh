@@ -1,0 +1,523 @@
+/* =========================================================
+ *  SISTEMA DE RESERVAS - DON PIERO
+ * =======================================================*/
+
+/* ---------- 1. MAPA GLOBAL DE NOMBRES ---------- */
+const nombresPlatos = {
+  // Piqueos / Entradas para compartir
+  "tequenos-de-queso": "Tequeños de queso",
+  "tequenos-de-mariscos": "Tequeños de mariscos",
+  "tequenos-de-rocoto-relleno": "Tequeños de rocoto relleno",
+  "piqueo-del-valle": "Piqueo del valle",
+  
+  // Entradas
+  "choclo-con-queso": "Choclo con queso",
+  "pulpo-al-olivo": "Pulpo al olivo",
+  "zarsa-de-patitas-de-cerdo": "Zarsa de patitas de cerdo",
+  "leche-de-tigre": "Leche de tigre",
+  "yuquitas-con-queso": "Yuquitas con queso",
+  
+  // Ensaladas/Postres
+  "delicia-de-higos-del-valle": "Delicia de higos del valle",
+  
+  // Carnes/Recomendaciones del Chef
+  "lomo-de-cerdo-en-salsa-de-higos": "Lomo de cerdo en salsa de higos",
+  "costillar-de-cerdo-a-la-caja-china": "Costillar de cerdo a la caja china",
+  "cerdo-costillar-de-cerdo-ahumado": "Cerdo costillar de cerdo ahumado",
+  "pollo-al-cilindro": "Pollo al cilindro",
+  
+  // Especiales/Sabores Criollazo
+  "rocoto-con-pastel-de-papa": "Rocoto con pastel de papa",
+  "triple-de-la-casa": "Triple de la casa",
+  "cuadruple-de-la-casa": "Cuádruple de la casa",
+  
+  // Platos Criollos
+  "chicharron-de-cerdo": "Chicharrón de cerdo",
+  "chicharron-de-costilla-de-cerdo": "Chicharrón de costilla de cerdo",
+  "chicharron-de-pollo": "Chicharrón de pollo",
+  "caldo-blanco-de-lomos": "Caldo blanco de lomos",
+  "costillar-de-cordero-dorado": "Costillar de cordero dorado",
+  "chupe-de-camaron": "Chupe de camarón",
+  "cuy-chactado": "Cuy chactado",
+  "cuy-de-la-casa": "Cuy de la casa",
+  
+  // Parrillas
+  "parrilla-de-res": "Parrilla de res",
+  "parrilla-de-cerdo": "Parrilla de cerdo",
+  "parrilla-de-pollo": "Parrilla de pollo",
+  "parrilla-de-pescado": "Parrilla de pescado",
+  
+  // Platos Infantiles
+  "milanesa-de-pollo": "Milanesa de pollo",
+  
+  // Pescados y Mariscos
+  "ceviche-de-trucha": "Ceviche de trucha",
+  "ceviche-de-mariscos": "Ceviche de mariscos",
+  "trio-marino": "Trio marino",
+  "arroz-de-mariscos": "Arroz de mariscos",
+  "chaufa-de-mariscos": "Chaufa de mariscos",
+  "fusion-marina": "Fusión marina",
+  "sudado-de-pescado": "Sudado de pescado",
+  "parihuela-de-trucha-y-mariscos": "Parihuela de trucha y mariscos",
+  
+  // Crocantes Marinos/Frituras
+  "trucha-frita": "Trucha frita",
+  "chicharron-de-trucha": "Chicharrón de trucha",
+  "chicharron-de-pulpo": "Chicharrón de pulpo",
+  "chicharron-de-calamar": "Chicharrón de calamar",
+  "chicharron-de-camaron": "Chicharrón de camarón",
+  
+  // Pescados en Salsas
+  "trucha-en-salsa-de-ajos": "Trucha en salsa de ajos",
+  "trucha-en-salsa-de-champinones": "Trucha en salsa de champiñones",
+  "trucha-en-salsa-de-mariscos": "Trucha en salsa de mariscos"
+};
+
+/* =========================================================
+ * INICIALIZACIÓN DE DATOS
+ * =======================================================*/
+function obtenerMapaPlatosInicial() {
+  return Object.fromEntries(Object.keys(nombresPlatos).map(id => [id, 0]));
+}
+
+let datosReserva = {
+  personas: null,
+  fecha: null,
+  hora: null,
+  nombre: null,
+  telefono: null,
+  email: null,
+  comentarios: null,
+  opcionMenu: "carta",
+  platos: obtenerMapaPlatosInicial()
+};
+
+
+/* =========================================================
+ * CONFIGURACIÓN INICIAL
+ * =======================================================*/
+document.addEventListener("DOMContentLoaded", () => {
+  configurarSelectorPersonas();
+  configurarTelefono();
+  configurarNavegacionPasos();
+  configurarSeleccionPlatos();
+  configurarEnvioReserva();
+  configurarFechaMinima();
+});
+
+/* =========================================================
+ * SELECCIÓN DE PERSONAS
+ * =======================================================*/
+function configurarSelectorPersonas() {
+  const botones = document.querySelectorAll(".boton-persona");
+  const inputPersonalizado = document.getElementById("personas-personalizado");
+
+  botones.forEach(btn => {
+    btn.addEventListener("click", () => manejarSeleccionPersonas(btn, botones));
+  });
+
+  inputPersonalizado.addEventListener("input", () => {
+    // Validar que solo sea número entero positivo
+    let valor = inputPersonalizado.value;
+    valor = valor.replace(/[^0-9]/g, ''); // Eliminar todo excepto números
+    valor = valor.replace(/^0+/, ''); // Eliminar ceros al inicio
+    valor = valor || '0'; // Si queda vacío, poner cero
+    
+    inputPersonalizado.value = valor;
+    datosReserva.personas = valor === '0' ? null : parseInt(valor);
+  });
+}
+
+function manejarSeleccionPersonas(boton, todosBotones) {
+  todosBotones.forEach(b => b.classList.remove("seleccionado"));
+  boton.classList.add("seleccionado");
+
+  const grupoPersonalizado = document.getElementById("grupo-personas-personalizado");
+  const inputPersonalizado = document.getElementById("personas-personalizado");
+  
+  if (boton.dataset.personas === "mas") {
+    grupoPersonalizado.style.display = "block";
+    inputPersonalizado.value = ''; // Limpiar el input
+    inputPersonalizado.focus(); // Dar foco al input
+    datosReserva.personas = null;
+  } else {
+    grupoPersonalizado.style.display = "none";
+    datosReserva.personas = parseInt(boton.dataset.personas);
+  }
+}
+
+/* =========================================================
+ * TELÉFONO SOLO DÍGITOS
+ * =======================================================*/
+function configurarTelefono() {
+  const tel = document.getElementById("telefono");
+  if (!tel) return;
+  tel.setAttribute("inputmode", "numeric");
+  tel.addEventListener("input", e => {
+    e.target.value = e.target.value.replace(/[^\d]/g, "");
+  });
+}
+
+/* =========================================================
+ * NAVEGACIÓN ENTRE PASOS
+ * =======================================================*/
+function configurarNavegacionPasos() {
+  document.getElementById("siguiente-1").addEventListener("click", validarPaso1);
+  document.getElementById("siguiente-2").addEventListener("click", validarPaso2);
+  document.getElementById("siguiente-3").addEventListener("click", validarPaso3);
+  document.getElementById("siguiente-4").addEventListener("click", validarPaso4);
+
+  document.getElementById("anterior-2").addEventListener("click", () => mostrarPaso(1));
+  document.getElementById("anterior-3").addEventListener("click", () => mostrarPaso(2));
+  document.getElementById("anterior-4").addEventListener("click", () => mostrarPaso(3));
+  document.getElementById("anterior-5").addEventListener("click", () => mostrarPaso(4));
+}
+
+/* =========================================================
+ * VALIDACIÓN DE PASOS
+ * =======================================================*/
+function validarPaso1() {
+  if (!datosReserva.personas || datosReserva.personas <= 0) {
+    return alert("Selecciona un número válido de personas (mínimo 10)");
+  }
+  mostrarPaso(2);
+}
+
+function validarPaso2() {
+  const fechaInput = document.getElementById("fecha").value;
+  const horaInput = document.getElementById("hora").value;
+
+  if (!fechaInput || !horaInput) return alert("Completa la fecha y hora");
+
+  const [anio, mes, dia] = fechaInput.split("-").map(Number);
+  const fechaSeleccionada = new Date(anio, mes - 1, dia);
+  fechaSeleccionada.setHours(0, 0, 0, 0);
+
+  const hoy = new Date();
+  hoy.setHours(0, 0, 0, 0);
+  const fechaMinima = new Date(hoy);
+  fechaMinima.setDate(hoy.getDate() + 1);
+
+  if (fechaSeleccionada < fechaMinima) return alert("La fecha debe ser a partir de mañana");
+
+  datosReserva.fecha = fechaInput;
+  datosReserva.hora = horaInput;
+  mostrarPaso(3);
+}
+
+function validarPaso3() {
+  const nombre = document.getElementById("nombre").value.trim();
+  const telefono = document.getElementById("telefono").value.trim();
+  const email = document.getElementById("email").value.trim();
+
+  if (!nombre || !telefono || !email) return alert("Completa todos los datos personales");
+
+  if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) return alert("Correo inválido");
+
+  Object.assign(datosReserva, { nombre, telefono, email });
+  mostrarPaso(4);
+}
+
+function validarPaso4() {
+  datosReserva.opcionMenu = document.getElementById("opcion-carta").checked ? "carta" : "seleccionar";
+  datosReserva.comentarios = document.getElementById("comentarios").value.trim(); // Moved here
+  actualizarResumenReserva();
+  mostrarPaso(5);
+}
+
+function configurarSeleccionPlatos() {
+  document.querySelectorAll('input[name="opcion-menu"]').forEach(radio => {
+    radio.addEventListener("change", () => {
+      document.getElementById("seleccion-platos").style.display = radio.value === "seleccionar" ? "block" : "none";
+    });
+  });
+
+  document.querySelectorAll(".boton-aumentar").forEach(btn => {
+    btn.addEventListener("click", () => cambiarCantidad(btn.dataset.plato, +1));
+  });
+  document.querySelectorAll(".boton-reducir").forEach(btn => {
+    btn.addEventListener("click", () => cambiarCantidad(btn.dataset.plato, -1));
+  });
+  document.querySelectorAll(".boton-eliminar").forEach(btn => {
+    btn.addEventListener("click", () => {
+      datosReserva.platos[btn.dataset.plato] = 0;
+      actualizarCantidadPlato(btn.dataset.plato);
+    });
+  });
+}
+
+function cambiarCantidad(platoId, delta) {
+  datosReserva.platos[platoId] = Math.max(0, datosReserva.platos[platoId] + delta);
+  actualizarCantidadPlato(platoId);
+}
+
+function actualizarCantidadPlato(platoId) {
+  document.querySelector(`.cantidad-plato[data-plato="${platoId}"]`).textContent = datosReserva.platos[platoId];
+}
+
+function mostrarPaso(n) {
+  document.querySelectorAll(".paso").forEach(p => p.classList.remove("activo"));
+  document.getElementById(`paso-${n}`).classList.add("activo");
+  document.querySelectorAll(".paso-progreso").forEach(p => p.classList.remove("activo"));
+  document.querySelector(`.paso-progreso[data-paso="${n}"]`).classList.add("activo");
+}
+
+/* =========================================================
+ * RESUMEN DE RESERVA
+ * =======================================================*/
+function actualizarResumenReserva() {
+  document.getElementById("resumen-personas").textContent = datosReserva.personas;
+
+  const [anio, mes, dia] = datosReserva.fecha.split("-").map(Number);
+  const fechaLocal = new Date(anio, mes - 1, dia);
+  document.getElementById("resumen-fecha").textContent = fechaLocal.toLocaleDateString("es-ES");
+
+  document.getElementById("resumen-hora").textContent = datosReserva.hora;
+  document.getElementById("resumen-nombre").textContent = datosReserva.nombre;
+  document.getElementById("resumen-telefono").textContent = datosReserva.telefono;
+  document.getElementById("resumen-email").textContent = datosReserva.email;
+
+  document.getElementById("resumen-opcion-menu").textContent =
+    datosReserva.opcionMenu === "carta" ? "Ver carta en restaurante" : "Platos seleccionados";
+
+  const contPlatos = document.getElementById("resumen-platos-container");
+  const listaPlatos = document.getElementById("resumen-platos-lista");
+  listaPlatos.innerHTML = "";
+
+  if (datosReserva.opcionMenu === "seleccionar") {
+    Object.entries(datosReserva.platos).forEach(([id, cant]) => {
+      if (cant > 0) {
+        const nombre = nombresPlatos[id] || "(sin nombre)";
+        listaPlatos.insertAdjacentHTML(
+          "beforeend",
+          `<div class="resumen-plato"><span>${nombre}</span><span>${cant}</span></div>`
+        );
+      }
+    });
+  }
+  contPlatos.style.display = listaPlatos.children.length ? "block" : "none";
+
+  const contCom = document.getElementById("resumen-comentarios-container");
+  if (datosReserva.comentarios) {
+    document.getElementById("resumen-comentarios").textContent = datosReserva.comentarios;
+    contCom.style.display = "block";
+  } else {
+    contCom.style.display = "none";
+  }
+}
+
+/* =========================================================
+ * ENVÍO DE RESERVA POR WHATSAPP
+ * =======================================================*/
+function configurarEnvioReserva() {
+  const boton = document.getElementById("enviar-reserva");
+  if (!boton) return;
+
+  boton.addEventListener("click", async () => {
+    if (!datosReserva.personas || !datosReserva.fecha || !datosReserva.hora || !datosReserva.nombre || !datosReserva.telefono) {
+      return alert("Completa todos los campos obligatorios");
+    }
+
+    // 📨 Enviar a Google Sheets si acepta publicidad
+    const checkboxPublicidad = document.getElementById("checkbox-publicidad");
+    if (checkboxPublicidad && checkboxPublicidad.checked) {
+      enviarDatosPublicidad(datosReserva.nombre, datosReserva.email);
+    }
+
+    // ✅ Continuar con WhatsApp
+    const [anio, mes, dia] = datosReserva.fecha.split("-").map(Number);
+    const fechaLocal = new Date(anio, mes - 1, dia);
+    const fechaFormato = fechaLocal.toLocaleDateString("es-ES", {
+      weekday: "long", year: "numeric", month: "long", day: "numeric"
+    });
+
+    let msg = "=====================\n";
+    msg += "  NUEVA RESERVA\n";
+    msg += "  RESTAURANTE VALLE ENCANTADO\n";
+    msg += "=====================\n\n";
+    msg += ">>> DATOS DEL CLIENTE <<<\n";
+    msg += `Nombre: ${datosReserva.nombre}\n`;
+    msg += `Teléfono: ${datosReserva.telefono}\n`;
+    if (datosReserva.email) msg += `Email: ${datosReserva.email}\n`;
+
+    msg += "\n>>> DETALLES DE LA RESERVA <<<\n";
+    msg += `Fecha: ${fechaFormato}\n`;
+    msg += `Hora: ${datosReserva.hora}\n`;
+    msg += `Personas: ${datosReserva.personas}\n`;
+    msg += `Opción de menú: ${
+      datosReserva.opcionMenu === "carta" ? "Ver carta en restaurante" : "Platos seleccionados"
+    }\n`;
+
+    if (datosReserva.opcionMenu === "seleccionar") {
+      msg += "\n>>> PLATOS SELECCIONADOS <<<\n";
+      Object.entries(datosReserva.platos).forEach(([id, cant]) => {
+        if (cant > 0) {
+          const nombre = nombresPlatos[id] || id;
+          msg += `${nombre}: ${cant}\n`;
+        }
+      });
+    }
+
+    if (datosReserva.comentarios) {
+      msg += "\n>>> COMENTARIOS <<<\n" + datosReserva.comentarios + "\n";
+    }
+
+    const url = `https://wa.me/51959108821?text=${encodeURIComponent(msg)}`;
+    window.open(url, "_blank");
+
+    alert("Serás redirigido a WhatsApp para confirmar tu reserva. ¡Gracias!");
+    reiniciarFormulario();
+  });
+}
+
+
+/* =========================================================
+ * FECHA MÍNIMA (MAÑANA)
+ * =======================================================*/
+function configurarFechaMinima() {
+  const manana = new Date();
+  manana.setDate(manana.getDate() + 1);
+  const yyyy = manana.getFullYear();
+  const mm = String(manana.getMonth() + 1).padStart(2, "0");
+  const dd = String(manana.getDate()).padStart(2, "0");
+  document.getElementById("fecha").min = `${yyyy}-${mm}-${dd}`;
+}
+
+/* =========================================================
+ * REINICIO DE FORMULARIO
+ * =======================================================*/
+function reiniciarFormulario() {
+  mostrarPaso(1);
+  document.querySelectorAll(".boton-persona").forEach(b => b.classList.remove("seleccionado"));
+  document.getElementById("grupo-personas-personalizado").style.display = "none";
+  document.getElementById("personas-personalizado").value = "";
+  document.getElementById("comentarios").value = "";
+
+  datosReserva = {
+    personas: null,
+    fecha: null,
+    hora: null,
+    nombre: null,
+    telefono: null,
+    email: null,
+    comentarios: null,
+    opcionMenu: "carta",
+    platos: obtenerMapaPlatosInicial()
+  };
+
+  ["fecha", "hora", "nombre", "telefono", "email", "comentarios"].forEach(id => {
+    document.getElementById(id).value = "";
+  });
+
+  document.getElementById("opcion-carta").checked = true;
+  document.getElementById("seleccion-platos").style.display = "none";
+  document.querySelectorAll(".cantidad-plato").forEach(el => el.textContent = "0");
+
+  configurarFechaMinima();
+}
+
+
+
+async function enviarDatosPublicidad(nombre, correo) {
+  const URL_SCRIPT = 'https://script.google.com/macros/s/AKfycbyqId2AvjvsnoI-Cj9Vx_QaBga4HEe2NgNNp8b1omTHXEknyh4_qtE_o6_tKnEcuk9U-w/exec';
+  
+  // Método 1: Fetch estándar
+  try {
+    const response = await fetch(URL_SCRIPT, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/x-www-form-urlencoded',
+      },
+      body: new URLSearchParams({
+        nombre: nombre || '',
+        correo: correo || '',
+        publicidad: 'Sí',
+        metodo: 'fetch'
+      })
+    });
+    
+    if (response.ok) {
+      const data = await response.json();
+      if (data.status === "success") {
+        console.log('✅ Datos enviados (fetch)');
+        return true;
+      }
+    }
+  } catch (error) {
+    console.warn('Error con fetch:', error);
+  }
+  
+  // Método 2: Formulario oculto
+  try {
+    const form = document.createElement('form');
+    form.style.display = 'none';
+    form.method = 'POST';
+    form.action = URL_SCRIPT;
+    form.target = '_blank';
+    
+    const addField = (name, value) => {
+      const input = document.createElement('input');
+      input.type = 'hidden';
+      input.name = name;
+      input.value = value;
+      form.appendChild(input);
+    };
+    
+    addField('nombre', nombre || '');
+    addField('correo', correo || '');
+    addField('publicidad', 'Sí');
+    addField('metodo', 'form');
+    
+    document.body.appendChild(form);
+    form.submit();
+    setTimeout(() => form.remove(), 5000);
+    
+    console.log('📤 Datos enviados (form)');
+    return true;
+  } catch (error) {
+    console.warn('Error con formulario:', error);
+  }
+  
+  // Método 3: Imagen como último recurso
+  try {
+    const img = new Image();
+    const url = new URL(URL_SCRIPT);
+    url.searchParams.set('nombre', nombre || '');
+    url.searchParams.set('correo', correo || '');
+    url.searchParams.set('publicidad', 'Sí');
+    url.searchParams.set('metodo', 'img');
+    
+    img.src = url.toString();
+    img.style.display = 'none';
+    document.body.appendChild(img);
+    setTimeout(() => img.remove(), 5000);
+    
+    console.log('🖼 Datos enviados (img)');
+    return true;
+  } catch (error) {
+    console.error('❌ Todos los métodos fallaron');
+    return false;
+  }
+}
+
+
+document.getElementById("click-fecha").addEventListener("click", function () {
+  document.getElementById("fecha").showPicker(); // abre el calendario
+});
+
+document.querySelectorAll(".opcion-menu").forEach(opcion => {
+  opcion.addEventListener("click", function() {
+    const idRadio = this.getAttribute('data-radio');
+    if (idRadio) {
+      const radioInput = document.getElementById(idRadio);
+      if (radioInput) {
+        radioInput.checked = true;
+        // También deberías actualizar la selección en datosReserva
+        datosReserva.opcionMenu = radioInput.value === "seleccionar" ? "seleccionar" : "carta";
+        // Mostrar/ocultar la sección de selección de platos según corresponda
+        document.getElementById("seleccion-platos").style.display = 
+          radioInput.value === "seleccionar" ? "block" : "none";
+      }
+    }
+  });
+});

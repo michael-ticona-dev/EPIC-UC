@@ -1,0 +1,217 @@
+/* ====================== */
+/* ESTILOS DE LOS BOTONES */
+/* ====================== */
+.toggle-icon {
+  font-size: 0.8em;
+  margin-left: 6px;
+  display: inline-block;
+  transition: transform 0.3s ease;
+  cursor: pointer;
+}
+
+.toggle-icon.girado {
+  transform: rotate(180deg);
+}
+
+/* ========================= */
+/* DESCRIPCIÓN DEL PLATO     */
+/* ========================= */
+@keyframes smoothAppear {
+  0% {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.plato-descripcion {
+  display: none;
+  padding: 0;
+  background-color: #fffefc;
+  border-top: 1px solid #eee;
+  max-height: 0;
+  overflow: hidden;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  border-radius: 0 0 12px 12px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+}
+
+.plato-descripcion.visible {
+  display: block;
+  max-height: 1000px; 
+  padding: 20px;
+  animation: smoothAppear 0.4s ease-out;
+  background-color: #fff;
+  border: 1px solid #eee;
+  border-top: none;
+}
+
+.plato-detalle {
+  display: flex;
+  align-items: flex-start;
+  gap: 24px;
+}
+
+.plato-detalle img {
+  width: 180px;
+  height: 180px;
+  object-fit: cover;
+  border-radius: 10px;
+  flex-shrink: 0;
+  box-shadow: 0 3px 10px rgba(0,0,0,0.08);
+  transition: transform 0.3s ease;
+}
+
+.plato-detalle img:hover {
+  transform: scale(1.02);
+}
+
+.texto-detalle {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  /*min-height: 180px; ACTIVAR SI SOLO HAY IMG*/
+  flex: 1;
+  padding: 8px 0;
+}
+
+.texto-info {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.texto-info p {
+  margin: 0;
+  font-size: 1rem;
+  color: #444;
+  line-height: 1.6;
+  font-weight: 400;
+  max-width: 500px;
+}
+
+.precio-plato {
+  background: linear-gradient(135deg, #FFD166, #FFB347);
+  padding: 8px 16px;
+  border-radius: 20px;
+  font-weight: 600;
+  color: #5a3e00;
+  font-size: 1rem;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.08);
+  margin-top: 12px;
+  display: inline-block;
+  align-self: flex-start; 
+}
+
+/* ====================== */
+/* HEADER DEL PLATO       */
+/* ====================== */
+.plato-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+  padding-bottom: 12px;
+}
+
+.plato-header .plato-titulo {
+  font-weight: bold;
+  font-size: 1.2rem;
+  margin: 0;
+}
+
+.plato-header .plato-controles {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+/* ======================== */
+/* RESPONSIVE TABLET        */
+/* ======================== */
+@media (max-width: 768px) {
+  .plato-detalle {
+    flex-direction: column;
+    align-items: center;
+    gap: 16px;
+  }
+
+  .plato-detalle img {
+    width: 100%;
+    max-width: 280px;
+    height: 200px;
+  }
+
+  .texto-detalle {
+    min-height: auto;
+    width: 100%;
+    padding: 0;
+    align-items: center;
+  }
+
+  .texto-info {
+    align-items: center;
+    text-align: center;
+    width: 100%;
+  }
+
+  .texto-info p {
+    max-width: 100%;
+    padding: 0 10px;
+  }
+
+  .precio-plato {
+    align-self: center;
+    margin-top: 16px;
+  }
+
+  .plato-header {
+    flex-direction: column;
+    text-align: center;
+    gap: 8px;
+  }
+
+  .plato-header .plato-controles {
+    justify-content: center;
+    width: 100%;
+  }
+
+  .plato-descripcion.visible {
+    padding: 18px;
+  }
+}
+
+/* ======================== */
+/* RESPONSIVE MÓVIL         */
+/* ======================== */
+@media (max-width: 480px) {
+  .plato-detalle img {
+    height: 180px;
+    max-width: 100%;
+  }
+
+  .texto-info p {
+    font-size: 0.95rem;
+    line-height: 1.5;
+  }
+
+  .precio-plato {
+    font-size: 0.95rem;
+    padding: 8px 14px;
+    margin-top: 14px;
+  }
+
+  .plato-header .plato-titulo {
+    font-size: 1.1rem;
+  }
+
+  .plato-descripcion.visible {
+    padding: 16px;
+  }
+}
+
+

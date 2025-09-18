@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hotel Valle Encantado - Sistema de Reservaciones</title>
+    <link rel="stylesheet" href="../assets/css/hotel-valle-encantado.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body id="inicio">
+    <header>
+    <div class="container">
+        <a href="#inicio" 
+            style="width: 120px; height: 50px; overflow: hidden; display: flex; align-items: center; justify-content: center; cursor: pointer;">
+                <img src="../assets/images/logos/logo-valle-encantado.png" 
+                    alt="Logo Valle Encantado" 
+                    style="width: 140%; height: auto; object-fit: contain;">
+            </a>
+
+        <input type="checkbox" id="menu-toggle" class="menu-toggle">
+        <label for="menu-toggle" class="menu-icon">
+            <span class="bar"></span>
+            <span class="bar"></span>
+            <span class="bar"></span>
+        </label>
+        
+        <nav class="nav-bar">
+            <ul>
+                <li><a href="#inicio">Inicio</a></li>
+                <li><a href="#habitaciones">Habitaciones</a></li>
+                <li><a href="#reservar">Reservaciones</a></li>
+                <li><a href="#contacto">Contacto</a></li>
+            </ul>
+        </nav>
+    </div>
+</header>
+
+
+    <main class="container">
+
+        <section id="habitaciones" class="section">
+    <h2>Nuestras Habitaciones</h2>
+    <div class="room-grid" id="roomContainer">
+    <!-- Habitación Matrimonial Simple -->
+    <div class="room-card">
+        <div class="room-image">
+            <img src="../assets/images/hotel/habitacion2.jpg" alt="Habitación Matrimonial Simple">
+        </div>
+        <div class="room-info">
+            <h3>Habitación Matrimonial Simple</h3>
+            <div class="room-price">$/100 por noche</div>
+            <div class="room-features">
+                <span>2 personas</span>
+                <span>1 cama matrimonial</span>
+                <span>Wi-Fi</span>
+                <span>Baño privado</span>
+            </div>
+            <p class="room-description">Habitación acogedora con cama matrimonial, ideal para una estancia cómoda en pareja.</p>
+            <button class="btn select-room" data-id="1">Seleccionar</button>
+        </div>
+    </div>
+
+    <!-- Habitación Doble -->
+    <div class="room-card">
+        <div class="room-image">
+            <img src="../assets/images/hotel/habitacion-doble.jpg" alt="Habitación Doble">
+        </div>
+        <div class="room-info">
+            <h3>Habitación Doble</h3>
+            <div class="room-price">$/120 por noche</div>
+            <div class="room-features">
+                <span>2 personas</span>
+                <span>2 camas</span>
+                <span>Wi-Fi</span>
+                <span>TV pantalla plana</span>
+                <span>Baño privado</span>
+            </div>
+            <p class="room-description">Amplia habitación con dos camas, perfecta para amigos o familiares que buscan comodidad.</p>
+            <button class="btn select-room" data-id="2">Seleccionar</button>
+        </div>
+    </div>
+
+    <!-- Habitación con Jacuzzi -->
+    <div class="room-card">
+        <div class="room-image">
+            <img src="../assets/images/hotel/habitacion-simple.jpg" alt="Habitación con Jacuzzi">
+        </div>
+        <div class="room-info">
+            <h3>Habitación con Jacuzzi</h3>
+            <div class="room-price">$/140 por noche</div>
+            <div class="room-features">
+                <span>1 personas</span>
+                <span>1 cama king</span>
+                <span>Wi-Fi</span>
+                <span>TV</span>
+                <span>Baño privado con jacuzzi</span>
+            </div>
+            <p class="room-description">Exclusiva habitación equipada con jacuzzi privado, ideal para una experiencia única de relax.</p>
+            <button class="btn select-room" data-id="3">Seleccionar</button>
+        </div>
+    </div>
+</div>
+
+</section>
+
+        
+        <section id="reservar" class="section">
+            <h2>Reservar Habitación</h2>
+            <div class="reservation-form">
+                <form id="reservationForm">
+                    <div class="form-group">
+                        <label for="roomType">Tipo de Habitación:</label>
+                        <select id="roomType" required>
+                            <option value="">Seleccione una habitación</option>
+                                <option value="1">Habitación Matrimonial Simple — S/ 100 por noche</option>
+                                <option value="2">Habitación Doble — S/ 120 por noche</option>
+                                <option value="3">Habitación con Jacuzzi — S/ 140 por noche</option>
+                        </select>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="checkIn">Fecha de Entrada:</label>
+                            <input type="date" id="checkIn" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="checkOut">Fecha de Salida:</label>
+                            <input type="date" id="checkOut" required>
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="adults">Adultos:</label>
+                            <input type="number" id="adults" min="1" max="4" value="1" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="children">Niños:</label>
+                            <input type="number" id="children" min="0" max="4" value="0">
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="fullName">Nombre Completo:</label>
+                        <input type="text" id="fullName" required>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="email">Email:</label>
+                            <input type="email" id="email">
+                        </div>
+                        <div class="form-group">
+                            <label for="phone">Teléfono:</label>
+                            <input type="tel" id="phone" required>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="specialRequests">Solicitudes Especiales:</label>
+                        <textarea id="specialRequests" rows="3"></textarea>
+                    </div>
+
+                    <button type="submit" class="btn" id="confirmReservation">Confirmar Reservación</button>
+                </form>
+
+                <div class="reservation-summary" id="reservationSummary">
+                    <h3>Resumen de Reservación</h3>
+                    <div class="summary-content">
+                        <p>Seleccione una habitación y fechas para ver el resumen</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <span id="contacto"></span>
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>Contacto</h3>
+                    <p><i class="fas fa-map-marker-alt"></i> El Valle Encantado, Fundo rústico s/n, a un costado del peaje, Uchumayo 04400–04401, Arequipa, Perú</p>
+                    <p><i class="fas fa-phone"></i> +52 980 661 191 </p>
+                    <p><i class="fas fa-envelope"></i>elvalleencantado123@gmail.com</p>
+                </div>
+                <div class="footer-section">
+                    <h3>Síguenos</h3>
+                    <div class="social-icons">
+                        <a href="https://wa.me/51980661191" target="_blank">
+                            <i class="fab fa-whatsapp"></i>
+                        </a>
+                        <a href="https://www.facebook.com/elvalleencantado123/" target="_blank"><i class="fab fa-facebook"></i></a>
+                        <a href="https://www.instagram.com/elvalle_aqp/?hl=es" target="_blank"><i class="fab fa-instagram"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>&copy; 2025 Valle Encantado. Todos los derechos reservados.</p>
+            </div>
+        </div>
+    </footer>
+
+    <div id="notification" class="notification"></div>
+
+    
+    <script src="../assets/js/hotel-valle-encantado.js"></script>
+</body>
+</html>
